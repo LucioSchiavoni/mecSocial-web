@@ -1,13 +1,42 @@
-import Navbar from "../components/Navbar"
+import { useEffect, useState } from "react";
+import Navbar from "../components/Navbar";
+import clienteAxios from "../libs/axios";
+
+export const HomeAuth = () => {
+
+    const [post, setPost] = useState<PostData[]>();
 
 
-const HomeAuth = () => {
-  return (
-    <div>
-        <Navbar/>
-        <p>Hola Usuario!!!</p>
-    </div>
-  )
-}
+    type PostData = {
+        Description: string;
+        ImagePost: string;
 
-export default HomeAuth
+    };
+
+    const getPost = async () => {
+        try {
+            const res = await clienteAxios.get<PostData[]>("/AllPost");
+            setPost(res.data);
+            console.log(res.data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+
+    useEffect(() => {
+        getPost();
+
+    }, []);
+
+    return (
+        <div>
+            <Navbar />
+
+            <p className="text-center mt-24 font-semibold text-4xl">Hola Usuario!!!</p>
+        </div>
+    );
+};
+
+
+export default HomeAuth;
