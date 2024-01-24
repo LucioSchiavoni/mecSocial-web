@@ -58,6 +58,7 @@ export const HomeAuth = () => {
                 <div key={post.ID} className="p-6 border shadow-xl w-80 h-80 rounded-md">
                     <img src={post.ImagePost} alt={post.Description} className="bg-gray-400 p-8 rounded-md shadow-xl h-28"/>
                    <div className="flex gap-2 p-2">
+                    <img src={post.User.Image} alt="usuario userimage" className="bg-gray-700 rounded-full p-4" />
                                <p className="font-bold ">{post.User.Username}</p>
                                 <p>{post.Description}</p>
                    </div>
