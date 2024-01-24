@@ -6,7 +6,7 @@ const Navbar = () => {
 
     const logout = useAuthStore(state => state.logout)
     const profile = useAuthStore(state => state.profile)
-   console.log(profile)
+   
   return (
     <div className="bg-blue-800 w-3/12 mt-6   rounded-full m-auto  py-3 px-6 flex text-white justify-between">
 

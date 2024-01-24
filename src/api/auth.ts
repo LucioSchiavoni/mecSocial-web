@@ -20,11 +20,34 @@ export const loginData = async() => {
     }
      }
 
-export const registerRequest = async (data: createUser) => {
-    clienteAxios.post("/user", data)
+export const registerRequest = async (data: createUser): Promise<any> => {
+    const formData = new FormData();
+
+    formData.append('username', data.username)
+    formData.append('email', data.email)
+    formData.append('password', data.password)
+    formData.append('description', data.description || '') 
+    
+    if(data.image){
+        formData.append('image', data.image, data.image.name)
+    }
+    
+    if(data.image_Bg){
+        formData.append('image_bg', data.image_Bg, data.image_Bg.name)
+    }
+    try {
+        const res = await clienteAxios.post("/user", formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            }
+        })
+        return res.data;
+    } catch (error) {
+        console.log(error)
+    }
 
 }
 
-export const createPostRequest = async (data: createPost) => {
-    clienteAxios.post("/post", data)
+export const createPostRequest = async (data: createPost)=> {
+    return clienteAxios.post("/post", data)
 }

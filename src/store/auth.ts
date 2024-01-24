@@ -2,6 +2,8 @@ import {create} from "zustand";
 import { persist } from "zustand/middleware";
 import { createUser } from "../interface/user";
 import { registerRequest } from "../api/auth";
+import { createPost } from "../interface/post";
+import { createPostRequest } from "../api/auth";
 
 type State = {
     token: string;
@@ -14,6 +16,7 @@ type Actions = {
     setProfile: (profile: any) => void
     logout: () => void
     register: (user: createUser) => void
+
 }
 
 
@@ -34,14 +37,19 @@ export const useAuthStore = create(persist<State & Actions>(
         register: async (user: createUser) => {
             try {
                 const res = await registerRequest(user)
-                set(() => ({
-                    isAuth: true
-                }))
+             
             } catch (error) {
                 console.log("Error del estado del registro: ", error)
             }
         },
-        
+        createPost: async (post: createPost) => {
+            try{
+                const res = await createPostRequest(post)
+                
+            }catch(error){
+                console.log(error)
+            }
+        },
         logout: () => set(state => ({
             token: '',
             isAuth: false,
