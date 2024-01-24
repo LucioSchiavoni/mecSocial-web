@@ -58,7 +58,13 @@ const AllPost = () => {
 <div className=" mt-9 w-5/12 m-auto ">
         <CreatePost/>
        <div className="grid grid-cols-1 gap-10">
-              {posts.map((post) => (
+              {
+              !posts ? 
+          
+                <p className="text-white text-4xl font-bold text-center">Cargando...</p>
+            
+              :
+              posts.map((post) => (
            <div key={post.ID} className="p-6  shadow-xl  h-auto rounded-md ">
                <img src={post.ImagePost} alt={post.Description} className="bg-gray-400 p-8 rounded-md w-11/12 m-auto shadow-xl h-80"/>
               <div className="flex gap-2 p-2 ml-5">
