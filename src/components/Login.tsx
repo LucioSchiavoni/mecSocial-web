@@ -25,8 +25,7 @@ const Login = () => {
         const data = await loginData()
 
         setProfile(data)
-        console.log(data)
-
+       
         navigate("/auth")
         } catch (error) {
             console.log("Error del try del Login: " ,error)
