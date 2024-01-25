@@ -56,9 +56,9 @@ const AllPost = () => {
 
   return (
  
-<div className=" mt-9 w-5/12 m-auto ">
+<div className="w-full">
         <CreatePost/>
-       <div className="grid grid-cols-1 gap-10">
+       <div className="grid grid-cols-1 gap-5">
               {
               !posts ? 
           
@@ -69,7 +69,7 @@ const AllPost = () => {
               posts.map((post) => (
            <div key={post.ID} className="p-6  shadow-xl  h-auto rounded-md ">
           
-            <img src={post.ImagePost} alt={post.Description} className="h-80 w-80 m-auto"/>
+            <img src={post.ImagePost} alt={post.Description} className="h-80 w-96 rounded-sm m-auto"/>
               <div className="flex gap-2 p-2 ml-5">
                <img src={post.User.Image} alt="usuario userimage" className="bg-gray-700 rounded-full w-8 h-8" />
                           <p className="font-bold py-1 text-xl ">{post.User.Username}</p>

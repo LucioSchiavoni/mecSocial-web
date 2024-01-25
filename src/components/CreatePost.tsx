@@ -31,7 +31,7 @@ try {
 
 
   return (
-    <div className="w-full mt-4 p-6 space-y-2">     
+    <div className="w-full  p-6 space-y-2">     
         <form onSubmit={handleSubmit} className="flex space-y-2 flex-col">
           <input className="h-24 px-2 rounded-md  text-black" placeholder="Que estas pensando.."/>
           <input type="file" ref={imageRef}  />

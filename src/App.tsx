@@ -5,7 +5,6 @@ import RegisterPage from './pages/RegisterPage'
 import { HomeAuth } from './pages/HomeAuth'
 import { ProtectedRoute } from './components/ProtectedRoute'
 import { useAuthStore } from './store/auth'
-import Profile from './pages/Profile'
 
 function App() {
 
@@ -21,7 +20,7 @@ function App() {
 
 <Route element={<ProtectedRoute isAllowed={isAuth} />} >
   <Route path='/auth' element={<HomeAuth/>}/>
-  <Route path='/profile' element={<Profile/>}/>
+
 
 </Route>
      
