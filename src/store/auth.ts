@@ -16,7 +16,7 @@ type Actions = {
     setProfile: (profile: any) => void
     logout: () => void
     register: (user: createUser) => void
-
+    createPost: (post: createPost) => void
 }
 
 

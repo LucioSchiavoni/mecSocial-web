@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 const RegisterPage =  () => {
 
   const register = useAuthStore((state) => state.register)
+ 
   const isAuth = useAuthStore((state) => state.isAuth)
   const imageRef = useRef<HTMLInputElement>(null);
   const imageBgRef = useRef<HTMLInputElement>(null);

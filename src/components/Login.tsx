@@ -1,6 +1,7 @@
 import { loginData, loginRequest } from "../api/auth"
 import { useAuthStore } from "../store/auth"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import img from '../assets/logo-mec.jpg'
 
 const Login = () => {
 
@@ -50,12 +51,12 @@ const Login = () => {
 
         <div className="flex items-center w-full max-w-md px-6 mx-auto lg:w-2/6">
             <div className="flex-1">
-                <div className="text-center">
+                <div className="text-center ">
                     <div className="flex justify-center mx-auto">
-                        <img className="w-auto h-7 sm:h-8" src="#" alt="img-logo"/>
+                    <img src={img} alt="logo" className="h-32 w-32 rounded-full"/>
                     </div>
 
-                    <p className="mt-3 text-3xl font-semibold text-white dark:text-gray-300">Inicia sesion </p>
+                    <p className="mt-6 text-3xl font-semibold text-white dark:text-gray-300">Inicia sesion </p>
                 </div>
 
                 <div className="mt-8">
@@ -82,7 +83,10 @@ const Login = () => {
 
                     </form>
 
-                    <p className="mt-6 text-sm text-center text-gray-300">No tienes cuenta aun? <a href="#" className="text-blue-500 focus:outline-none focus:underline hover:underline">Registrate</a>.</p>
+                    <p className="mt-6  text-sm text-center text-gray-300">Eres nuevo? 
+                    <Link to="/register" className="text-blue-500 focus:outline-none focus:underline hover:underline">Registrate</Link>
+                    </p> 
+                   
                 </div>
             </div>
         </div>

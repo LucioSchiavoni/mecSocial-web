@@ -1,6 +1,6 @@
 export interface createPost {
-    imagePost?: string;
+    imagePost?: File | null;
     description?:string;
-    user_id: string;
+    user_id: number;
 }
 

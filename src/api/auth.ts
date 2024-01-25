@@ -49,5 +49,26 @@ export const registerRequest = async (data: createUser): Promise<any> => {
 }
 
 export const createPostRequest = async (data: createPost)=> {
+
+    const formData = new FormData()
+       if(data.description){
+        formData.append('description', data.description)
+    }
+    if(data.imagePost){
+        formData.append('image_post', data.imagePost, data.imagePost.name)
+    }
+
+    formData.append("user_id", data.user_id.toString())
+
+    try {
+        const res = await clienteAxios.post("/post", formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            }
+        })
+        return res.data;
+    } catch (error) {
+        console.log("Error aqui en axios:", error)
+    }
     return clienteAxios.post("/post", data)
 }
