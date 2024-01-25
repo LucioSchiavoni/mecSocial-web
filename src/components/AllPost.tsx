@@ -47,6 +47,7 @@ const AllPost = () => {
         }
     };
 
+
     useEffect(() => {
         getPosts();
     }, []);
@@ -64,9 +65,11 @@ const AllPost = () => {
                 <p className="text-white text-4xl font-bold text-center">Cargando...</p>
             
               :
+              
               posts.map((post) => (
            <div key={post.ID} className="p-6  shadow-xl  h-auto rounded-md ">
-               <img src={post.ImagePost} alt={post.Description} className="bg-gray-400 p-8 rounded-md w-11/12 m-auto shadow-xl h-80"/>
+          
+            <img src={post.ImagePost} alt={post.Description} className="h-80 w-80 m-auto"/>
               <div className="flex gap-2 p-2 ml-5">
                <img src={post.User.Image} alt="usuario userimage" className="bg-gray-700 rounded-full w-8 h-8" />
                           <p className="font-bold py-1 text-xl ">{post.User.Username}</p>

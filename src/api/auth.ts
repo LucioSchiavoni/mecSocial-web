@@ -58,7 +58,7 @@ export const createPostRequest = async (data: createPost)=> {
         formData.append('image_post', data.imagePost, data.imagePost.name)
     }
 
-    formData.append("user_id", data.user_id.toString())
+    formData.append("id", data.userID)
 
     try {
         const res = await clienteAxios.post("/post", formData, {
