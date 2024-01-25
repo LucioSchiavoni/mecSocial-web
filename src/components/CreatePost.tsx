@@ -13,13 +13,14 @@ const CreatePost = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   
     e.preventDefault()
-    console.log(userData)
+    console.log(userData.id)
+
     const description = (e.currentTarget.elements[0] as HTMLInputElement).value;
     const imageFile = (imageRef.current?.files)?.[0];
    
 try {
-  const response = await createPost({ description, imagePost: imageFile || null, user_id: userData.user_id }) as any;
-  console.log(response);
+  const response = await createPost({ description, imagePost: imageFile || null, user_id: userData.id }) as any;
+  console.log(response.data);
 } catch (error) {
   console.error("Error en la solicitud:", error);
  
