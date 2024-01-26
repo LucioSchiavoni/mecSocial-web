@@ -31,76 +31,106 @@ const RegisterPage =  () => {
   return (
 
  <>
-    <div className="dark:bg-slate-900 min-h-screen">
+ <section className="bg-white dark:bg-gray-900">
 
-    <section className="  flex justify-center items-center ">
-  
-  <Link to="/" className=" bg-blue-600 w-16  px-2 py-1 font-semibold ml-2 text-xl rounded-md text-white  hover:bg-blue-500 absolute top-4 left-4">
-    Atras
-    </Link>
-
-    <form onSubmit={handleSubmit} className="bg-blue-900 mt-24 p-8 rounded-md">
-        <div className="grid grid-cols-1 gap-6  sm:grid-cols-2">
-            <div>
-                <label className="text-gray-700 dark:text-gray-200" htmlFor="username">Nombre</label>
-                <input  type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
-            </div>
-
-            <div>
-                <label className="text-gray-700 dark:text-gray-200" htmlFor="emailAddress">Correo</label>
-                <input  type="email" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
-            </div>
-
-            <div>
-                <label className="text-gray-700 dark:text-gray-200" htmlFor="password">Contraseña</label>
-                <input  type="password" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
-            </div>
-                <div>
-                <label className="text-gray-700 dark:text-gray-200" htmlFor="">Descripción</label>
-                <input type="text" className="block w-full p-8 h-24 px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
-            </div>
-      
-             
-            </div>
-
-<div>
-    <label  className="block text-sm text-gray-500 dark:text-gray-300">Foto de perfil</label>
-
-    <label  className="flex flex-col items-center w-full max-w-lg p-5 mx-auto mt-2 text-center bg-white border-2 border-gray-300 border-dashed cursor-pointer dark:bg-gray-900 dark:border-gray-700 rounded-xl">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-8 h-8 text-gray-500 dark:text-gray-400">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
-        </svg>
-
-        <h2 className="mt-1 font-medium tracking-wide text-gray-700 dark:text-gray-200">Subir</h2>
-
+    <div className="flex justify-center min-h-screen">  
    
+        <div className="hidden bg-cover lg:block lg:w-2/5 bg-[url(https://cdn.elobservador.com.uy/032021/1614904377786/_LCM2004.JPG)]" >
+        </div>
+ <Link to='/' className="absolute top-10 left-10 bg-blue-700 text-white font-semibold px-3 py-1 rounded-md text-xl hover:bg-blue-600">Atras</Link>
+        <div className="flex items-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5">
+            <div className="w-full">
+                <h1 className="text-2xl font-semibold tracking-wider text-gray-800 capitalize dark:text-white">
+                    Registrate.
+                </h1>
 
-        <input  type="file" className="hidden" ref={imageRef}/>
-       
-    </label>
-</div>
-<div>
-    <label htmlFor="file" className="block text-sm text-gray-500 dark:text-gray-300">Foto de portada</label>
+                <p className="mt-4 text-gray-500 dark:text-gray-400">
+                    Ingresa tus datos para crear una cuenta gratis.
+                </p>
 
-    <label className="flex flex-col items-center w-full max-w-lg p-5 mx-auto mt-2 text-center bg-white border-2 border-gray-300 border-dashed cursor-pointer dark:bg-gray-900 dark:border-gray-700 rounded-xl">
-      
+                <div className="mt-6">
+                    <h1 className="text-gray-500 dark:text-gray-300">Selecciona el tipo</h1>
 
-        <h2 className="mt-1 font-medium tracking-wide text-gray-700 dark:text-gray-200">Subir</h2>
+                    <div className="mt-3 md:flex md:items-center md:-mx-2">
+                        <button className="flex justify-center w-full px-6 py-3 text-white bg-blue-500 rounded-lg md:w-auto md:mx-2 focus:outline-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+
+                            <span className="mx-2">
+                                becario
+                            </span>
+                        </button>
+
+                        <button className="flex justify-center w-full px-6 py-3 mt-4 text-blue-500 border border-blue-500 rounded-lg md:mt-0 md:w-auto md:mx-2 dark:border-blue-400 dark:text-blue-400 focus:outline-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+
+                            <span className="mx-2">
+                                chambeador
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
+                    <div>
+                        <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Nombres</label>
+                        <input type="text" placeholder="Ej: Manolo Lamas" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                    </div>
+
+                    <div>
+                        <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Correo </label>
+                        <input type="email" placeholder="ejemplo@correo.com" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                    </div>
 
 
-        <input id="dropzone-file" type="file" className="hidden" ref={imageBgRef}/>
-       
-    </label>
-</div>
+                    <div>
+                        <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Contraseña</label>
+                        <input type="password" placeholder="Ingresa tu contraseña" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                    </div>
 
-        
+                    <div>
+                        <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Descripcion </label>
+                        <input type="text" placeholder="Cuenta sobre ti.." className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                    </div>
 
-        <div className="flex justify-end mt-6">
-            <button className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-blue-700 hover:bg-blue-600 rounded-md focus:outline-none focus:bg-gray-600 font-semibold">Guardar</button>
-     </div>
-        </form>
-      </section>
+                    
+                    <label htmlFor="dropzone-file" className="flex items-center px-3 py-3 mx-auto mt-6 text-center bg-white border-2 border-dashed rounded-lg cursor-pointer dark:border-gray-600 dark:bg-gray-900">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                </svg>
+
+                <h2 className="mx-3 text-gray-400">Foto de perfil</h2>
+
+                <input id="dropzone-file" type="file" ref={imageRef} className="hidden" />
+            </label>
+                    
+                                <label htmlFor="dropzone-file" className="flex items-center px-3 py-3 mx-auto mt-6 text-center bg-white border-2 border-dashed rounded-lg cursor-pointer dark:border-gray-600 dark:bg-gray-900">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                </svg>
+
+                <h2 className="mx-3 text-gray-400 ">Foto de portada</h2>
+
+                <input id="dropzone-file" type="file" ref={imageBgRef} className="hidden" />
+            </label>
+                    <button type="submit"
+                        className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                        <span>Guardar </span>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 rtl:-scale-x-100" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
+</section>
 </>
 
 
