@@ -1,3 +1,4 @@
+import { createComments } from "../interface/comments";
 import { createPost } from "../interface/post";
 import { createUser } from "../interface/user";
 import clienteAxios from "../libs/axios";
@@ -70,5 +71,27 @@ export const createPostRequest = async (data: createPost)=> {
     } catch (error) {
         console.log("Error aqui en axios:", error)
     }
-    return clienteAxios.post("/post", data)
+  
+}
+
+export const createCommentsRequest = async (data: createComments) => {
+    
+    const dataComments = {
+        'UserID': data.userID,
+        'PostID': data.postID,
+        'content': data.content,
+        'CreatorID': data.creatorID
+    }
+
+    try {
+        const res = await clienteAxios.post("/comments", dataComments, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        return res.data
+    } catch (error) {
+        console.log("Error en el fetch: ", error)
+    }
+
 }
