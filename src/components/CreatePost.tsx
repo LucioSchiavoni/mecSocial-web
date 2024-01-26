@@ -31,11 +31,11 @@ try {
 
 
   return (
-    <div className="w-full  p-6 space-y-2">     
+    <div className="w-full  divide-slate-200 p-6 space-y-2  rounded-md ">     
         <form onSubmit={handleSubmit} className="flex space-y-2 flex-col">
           <input className="h-24 px-2 rounded-md  text-black" placeholder="Que estas pensando.."/>
           <input type="file" ref={imageRef}  />
-          <button className="bg-blue-800 rounded-md hover:bg-blue-700 text-white px-3 py-1 shadow-xl">Publicar</button>
+          <button className="bg-blue-800  rounded-md hover:bg-blue-700 text-white px-3 py-1 shadow-xl">Publicar</button>
         </form>      
   </div>
   )

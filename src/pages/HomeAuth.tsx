@@ -10,8 +10,9 @@ export const HomeAuth = () => {
     return (
        <>
         <Layout>
-             <div className=" mt-10 justify-between flex ">
+             <div className=" gap-2 justify-between flex ">
               <Profile/>
+            
              <AllPost/>
               <Friends/>
 

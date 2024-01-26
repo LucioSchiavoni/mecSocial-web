@@ -22,7 +22,7 @@ const Navbar = () => {
 
 <div className="flex gap-10 justify-center">
     
-      <Link to="/profile"> <p className="font-semibold mt-2">{profile.username}</p> </Link>
+      <Link to="/profilePage"> <p className="font-semibold mt-2">{profile.username}</p> </Link>
                 <button className="bg-white px-3 py-1 text-blue-700 rounded-md" onClick={() => {
             logout()
         }}>Salir</button>

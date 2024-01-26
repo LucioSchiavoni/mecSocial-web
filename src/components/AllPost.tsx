@@ -56,38 +56,49 @@ const AllPost = () => {
 
   return (
  
-<div className="w-full">
+<div className="w-full min-h-screen  shadow-xl">
         <CreatePost/>
-       <div className="grid grid-cols-1 gap-5">
+       <div className="grid grid-cols-1 gap-5 divide-y divide-white">
               {
               !posts ? 
           
                 <p className="text-white text-4xl font-bold text-center">Cargando...</p>
             
               :
-              
+
               posts.map((post) => (
-           <div key={post.ID} className="p-6  shadow-xl  h-auto rounded-md ">
+           <div key={post.ID} className="flex justify-between flex-col border border-gray-700 shadow-xl  h-auto rounded-sm "> 
+          <div>
+              <div className="flex p-4 gap-2">
+              <img src={post.User.Image} alt="usuario" className="object-cover w-16  rounded-md aspect-square " />
+            <div className="flex flex-col">
+           <p className="font-semibold py-1 text-xl ">{post.User.Username}</p>
+            <span className="text-gray-200">2 hr</span>
+            </div>
+           </div>
           
-            <img src={post.ImagePost} alt={post.Description} className="h-80 w-96 rounded-sm m-auto"/>
-              <div className="flex gap-2 p-2 ml-5">
-               <img src={post.User.Image} alt="usuario userimage" className="bg-gray-700 rounded-full w-8 h-8" />
-                          <p className="font-bold py-1 text-xl ">{post.User.Username}</p>
-                           <p className="py-1 text-xl">{post.Description}</p>
-              </div>
+           
+            <p className=" ml-12 py-3 text-xl">{post.Description}</p>
+            <div className="border  border-gray-700">
+                 <img src={post.ImagePost} alt={post.Description} className=" w-96 h-96 rounded-sm m-auto "/>
+            </div>
+          </div>
+         
+           
+         
                 
-                <div>
+                <div className=" ">
                     <button className="bg-white  mt-2 hover:bg-gray-400 transition-all delay-150 duration-300 rounded-md text-black ml-8 py-1 px-3">Me gusta</button>
                 </div>
 
                <div className="p-6">
                 
-                   {post.Comments.map((comment) => (
-                       <div key={comment.ID} className="flex flex-col w-full  shadow-xl p-2 rounded-md">
+            {post.Comments.map((comment) => (
+                <div key={comment.ID} className="flex flex-col w-full  shadow-xl p-2 rounded-md">
                         <div className=" p-2 border-b-2 border-gray-800">
                             <div className=" flex items-center p-1 gap-2 ">
                                <img src={post.User.Image} alt="img-user"  className="rounded-full  w-8 h-8"/>
- <p className="font-bold "> {comment.User.Username}</p> <p className="">{comment.Content}</p>
+                    <p className="font-bold "> {comment.User.Username}</p> <p className="">{comment.Content}</p>
  
                             </div>
 <p className="text-gray-600 ml-4">{comment.CreatedAt}</p>
