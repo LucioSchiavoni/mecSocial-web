@@ -1,4 +1,5 @@
 import { createComments } from "../interface/comments";
+import { createLike } from "../interface/likes";
 import { createPost } from "../interface/post";
 import { createUser } from "../interface/user";
 import clienteAxios from "../libs/axios";
@@ -95,3 +96,33 @@ console.log("userID enviado desde el frontend:", data.userID);
         console.log("Error en el fetch: ", error);
     }
 };
+
+
+export const createLikeRequest = async (data: createLike) => {
+   
+    const dataLike = {
+    "userID": parseInt(data.userID, 10),  //usuario que creo el post
+    "postID": parseInt(data.postID, 10) ,  // id del post
+    "creatorID": parseInt(data.creatorID, 10) //usuario que da el like
+    }
+    try {
+        const res = await clienteAxios.post("/like", dataLike, {
+            headers: {
+                'Content-Type':'application/json'
+            }
+        })
+        return res.data
+    } catch (error) {
+        console.log("error en el fetch del like: ", error)
+    }
+}
+
+export const getLikeCount = async (postID: string, userID: string) => {
+    
+    try {
+         const res = clienteAxios.get(`/${postID}/likes/${userID}`)
+        return res
+    } catch (error) {
+        console.log("Error del fetch del contador de like: ",error)
+    }
+}

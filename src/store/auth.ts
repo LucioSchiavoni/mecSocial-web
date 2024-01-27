@@ -1,10 +1,11 @@
 import {create} from "zustand";
 import { persist } from "zustand/middleware";
 import { createUser } from "../interface/user";
-import { createCommentsRequest, registerRequest } from "../api/auth";
+import { createCommentsRequest, createLikeRequest, getLikeCount, registerRequest } from "../api/auth";
 import { createPost } from "../interface/post";
 import { createPostRequest } from "../api/auth";
 import { createComments } from "../interface/comments";
+import { createLike } from "../interface/likes";
 
 type State = {
     token: string;
@@ -19,6 +20,8 @@ type Actions = {
     register: (user: createUser) => void
     createPost: (post: createPost) => void
     createComments: (comments: createComments) => void
+    createLike: (likes: createLike) => void
+    
 }
 
 
@@ -63,6 +66,14 @@ export const useAuthStore = create(persist<State & Actions>(
 
             } catch (error) {
                 console.log("Error en el state: ",error)
+            }
+        },
+        createLike: async (likes: createLike) => {
+            try {
+                const res = await createLikeRequest(likes)
+
+            } catch (error) {
+                console.log(error)
             }
         },
 

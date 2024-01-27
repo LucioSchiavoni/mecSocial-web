@@ -3,11 +3,14 @@ import clienteAxios from "../libs/axios";
 import CreatePost from "./CreatePost";
 import { useAuthStore } from "../store/auth";
 
+
 const AllPost = () => {
 
     const [posts, setPosts] = useState<PostData[]>([]);
+
     const profile = useAuthStore((state) => state.profile)
     const createComment = useAuthStore((state) => state.createComments)
+    // const createLike= useAuthStore((state) => state.createLike)
 
     type PostData = {
         ID: number;
@@ -71,6 +74,42 @@ const AllPost = () => {
         }
     }
 
+//    const handleLike = async (userID: number, postID: number) => {
+
+//     const idCreator: string = profile.id.toString()
+//       const postIDStr: string = postID.toString()
+//             const idStr: string = userID.toString()
+            
+
+//       try {
+//         await createLike({userID: idStr, postID: postIDStr, creatorID: idCreator})
+//         setLikes(true)
+//       } catch (error) {
+//         console.log("Error del handleLike: ", error)
+//       }
+
+  
+//    }
+
+//     const LikeCounter = async (userID: number, postID: number) => {
+//     const postIDStr: string = postID.toString();
+//     const userIDStr: string = userID.toString();
+
+//     try {
+//       const res = await getLikeCount(userIDStr, postIDStr);
+//        if (res != null) { // Verifica si res está definido
+//       setLikeCount(res.data);
+//       console.log(res);
+//     } else {
+//       console.log("La respuesta de getLikeCount es undefined.");
+//     }
+     
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+
+
 
 
 
@@ -90,23 +129,53 @@ const AllPost = () => {
            <div key={post.ID} className="flex justify-between flex-col border border-gray-700 shadow-xl    h-auto rounded-sm "> 
           <div>
               <div className="flex p-4 gap-2 ">
-              <img src={post.User.Image} alt="usuario" className="object-cover w-16  rounded-md aspect-square " />
+                {
+                    post.User.Image ?  
+                (
+                <img src={post.User.Image} alt="usuario" className="object-cover w-16  rounded-md aspect-square " />
+                )
+                :
+                null
+                }
+          
             <div className="flex ">
            <p className="font-semibold py-1 text-xl capitalize">{post.User.Username}</p>
             <span className="text-gray-200 p-1.5 px-4 ml-2">{post.CreatedAt.slice(0,10)}</span>
             </div>
            </div>
           
-           
-            <p className="  ml-5 py-3 text-xl">{post.Description}</p>
+           { 
+           post.Description !== null ? (
+<p className="  ml-5 py-3 text-xl">{post.Description}</p>
+            
+           )
+           :
+           null
+           }
+            
             <div className="">
                  <img src={post.ImagePost} alt={post.Description} className="object-cover w-7/12   rounded-sm m-auto "/>
             </div>
           </div>
-                <div className=" ">
-                    <button className="bg-white  mt-2 hover:bg-gray-400 transition-all delay-150 duration-300 rounded-md text-black ml-8 py-1 px-3">Me gusta</button>
-                </div>
+        
+          {/* {    
+          likes ?
 
+             <div>
+                    <button className="bg-blue-800  mt-2 transition-all delay-150 duration-300 rounded-md text-white ml-8 py-1 px-3">
+                        Te gusta
+                    </button>
+                </div>
+      
+                :
+                    <div className=" ">
+         <button className="bg-white  mt-2 hover:bg-gray-400 transition-all delay-150 duration-300 rounded-md text-black ml-8 py-1 px-3" onClick={ () => handleLike( post.User.ID, post.ID)}>Me gusta</button>
+                </div>
+        
+             }
+        */}
+
+         
                <div className="p-6">
                    <div className=" p-2 flex  gap-2 mt-5">
                     <form onSubmit={(e) => handleSubmitComments(e, post.User.ID, post.ID)} className="flex  w-full gap-2">
