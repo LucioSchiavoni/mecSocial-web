@@ -13,6 +13,7 @@ const AllPost = () => {
         ID: number;
         Description: string;
         ImagePost: string;
+        CreatedAt: string;
         User: {
             ID: number;
             Username: string;
@@ -58,12 +59,13 @@ const AllPost = () => {
     const handleSubmitComments = async (e: React.FormEvent<HTMLFormElement>, userID: number, postID: number) => {
         e.preventDefault()
         const content = (e.currentTarget.elements[0] as HTMLInputElement).value;
-        const idCreator: string = profile.id.toString()
-        const userIDStr: string = userID.toString()
+        const idCreator: string = userID.toString()
+        const userIDStr: string = profile.id.toString()
         const postIDStr: string = postID.toString()
         
         try {
             await createComment({ userID: userIDStr  , postID: postIDStr , content , creatorID: idCreator})
+            window.location.reload()
         } catch (error) {
             console.log("Error en handleSubmit :", error)
         }
@@ -89,9 +91,9 @@ const AllPost = () => {
           <div>
               <div className="flex p-4 gap-2 ">
               <img src={post.User.Image} alt="usuario" className="object-cover w-16  rounded-md aspect-square " />
-            <div className="flex flex-col">
+            <div className="flex ">
            <p className="font-semibold py-1 text-xl capitalize">{post.User.Username}</p>
-            <span className="text-gray-200">2 hr</span>
+            <span className="text-gray-200 p-1.5 px-4 ml-2">{post.CreatedAt.slice(0,10)}</span>
             </div>
            </div>
           
@@ -106,24 +108,6 @@ const AllPost = () => {
                 </div>
 
                <div className="p-6">
-                
-            {post.Comments.map((comment) => (
-                <div key={comment.ID} className="flex flex-col w-full  shadow-xl p-2 rounded-md">
-                        <div className=" p-2 border-b-2 border-gray-800">
-                            <div className=" flex items-center p-1 gap-2 ">
-                               <img src={post.User.Image} alt="img-user"  className="rounded-full  w-8 h-8"/>
-                    <p className="font-bold capitalize"> {comment.User.Username}</p> <p className="">{comment.Content}</p>
-                
-                            </div>
-                        <p className="text-gray-600 ml-4">{comment.CreatedAt}</p>
-                        </div>
-                            
-                    
-                          
-                  
-                       </div>
-                   ))} 
-
                    <div className=" p-2 flex  gap-2 mt-5">
                     <form onSubmit={(e) => handleSubmitComments(e, post.User.ID, post.ID)} className="flex  w-full gap-2">
                     <img src={profile.image} alt="perfil" className="w-12 rounded-full h-12" />
@@ -132,6 +116,22 @@ const AllPost = () => {
                           </form>
                            </div>
                </div>
+                 {post.Comments.map((comment) => (
+                <div key={comment.ID} className="flex ml-10 border border-gray-800 bg-slate-900  white flex-col w-7/12  shadow-xl p-2  text-white">
+                        <div className=" p-2 border-gray-800">
+                            <div className=" flex items-center p-1 gap-2 ">
+                               <img src={post.User.Image} alt="img-user"  className="rounded-full  w-8 h-8"/>
+                    <p className="font-bold capitalize"> {comment.User.Username}</p> 
+                    <p className="text-gray-400 ml-4">{comment.CreatedAt.slice(0, 10)}</p>
+                            </div>
+                    <p className="ml-12 p-2 text-xl">{comment.Content}</p>
+                        </div>
+                            
+                    
+                          
+                  
+                       </div>
+                   ))} 
            </div>
        ))}
    </div>

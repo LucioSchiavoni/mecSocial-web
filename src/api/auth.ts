@@ -77,21 +77,21 @@ export const createPostRequest = async (data: createPost)=> {
 export const createCommentsRequest = async (data: createComments) => {
     
     const dataComments = {
-        'UserID': data.userID,
-        'PostID': data.postID,
+        'userID': parseInt(data.userID, 10),          
+        'postID': parseInt(data.postID, 10),          
         'content': data.content,
-        'CreatorID': data.creatorID
-    }
-
+        'creatorID': parseInt(data.creatorID, 10)    
+    };
+    console.log(dataComments)
+console.log("userID enviado desde el frontend:", data.userID);
     try {
         const res = await clienteAxios.post("/comments", dataComments, {
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
-        return res.data
+        });
+        return res.data;
     } catch (error) {
-        console.log("Error en el fetch: ", error)
+        console.log("Error en el fetch: ", error);
     }
-
-}
+};

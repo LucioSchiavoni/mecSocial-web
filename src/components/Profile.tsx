@@ -3,7 +3,7 @@ import { useAuthStore } from "../store/auth"
 const Profile = () => {
 
     const profile = useAuthStore((state) => state.profile)
-const logout = useAuthStore(state => state.logout)
+    const logout = useAuthStore(state => state.logout)
 
   return (
     <div className="flex flex-col items-center w-5/12   rounded-md ">
