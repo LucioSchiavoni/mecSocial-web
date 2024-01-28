@@ -32,7 +32,7 @@ try {
 
   return (
     <div className="w-full  divide-slate-200  py-7 space-y-2  rounded-md ">     
-        <form onSubmit={handleSubmit} className="flex space-y-2 flex-col border rounded-md border-double border-sky-800 p-2">
+        <form onSubmit={handleSubmit} className="flex space-y-2 flex-col border rounded-md border-double border-slate-600 p-2">
 <div className=" ">
   <div className="flex gap-1">
       <img src={userData.image} alt="" className="w-12 h-12 rounded-full object-cover aspect-square" />

@@ -4,13 +4,14 @@ import CreatePost from "./CreatePost";
 import { useAuthStore } from "../store/auth";
 
 
+
 const AllPost = () => {
 
     const [posts, setPosts] = useState<PostData[]>([]);
 
     const profile = useAuthStore((state) => state.profile)
     const createComment = useAuthStore((state) => state.createComments)
-    // const createLike= useAuthStore((state) => state.createLike)
+   
 
     type PostData = {
         ID: number;
@@ -48,7 +49,7 @@ const AllPost = () => {
         try {
             const res = await clienteAxios.get<PostData[]>("/AllPost");
             setPosts(res.data);
-           
+           console.log(res.data)
         } catch (error) {
             console.log(error);
         }
@@ -83,7 +84,7 @@ const AllPost = () => {
 
 //       try {
 //         await createLike({userID: idStr, postID: postIDStr, creatorID: idCreator})
-//         setLikes(true)
+     
 //       } catch (error) {
 //         console.log("Error del handleLike: ", error)
 //       }
@@ -97,18 +98,26 @@ const AllPost = () => {
 
 //     try {
 //       const res = await getLikeCount(userIDStr, postIDStr);
-//        if (res != null) { // Verifica si res está definido
-//       setLikeCount(res.data);
-//       console.log(res);
-//     } else {
-//       console.log("La respuesta de getLikeCount es undefined.");
-//     }
-     
+//      if (res !== undefined && res.data !== undefined) {
+//     setLikes(res.data);
+//     setLiked(true)
+//     console.log(res);
+//       }else {
+//         console.log("Likes null")
+//       }
+    
 //     } catch (error) {
 //       console.log(error);
 //     }
 //   };
 
+//   useEffect(() => {
+
+//     posts.forEach((post) => {
+//         const {User, ID} = post;
+//         LikeCounter(User.ID, ID)
+//     })
+//   },[posts])
 
 
 
@@ -119,14 +128,14 @@ const AllPost = () => {
         <CreatePost/>
        <div className="grid grid-cols-1 gap-5 overscroll-contain divide-white">
               {
-              !posts ? 
+              !posts == null ? 
           
                 <p className="text-white text-4xl font-bold text-center">Cargando...</p>
             
               :
 
               posts.map((post) => (
-           <div key={post.ID} className="flex justify-between flex-col border border-gray-700 shadow-xl    h-auto rounded-sm "> 
+           <div key={post.ID} className="flex justify-between flex-col shadow-xl    h-auto rounded-sm "> 
           <div>
               <div className="flex p-4 gap-2 ">
                 {
@@ -145,38 +154,26 @@ const AllPost = () => {
            </div>
           
            { 
-           post.Description !== null ? (
-<p className="  ml-5 py-3 text-xl">{post.Description}</p>
+           post.Description !== "" ? (
+<p className="ml-28 py-3 text-xl">{post.Description}</p>
             
            )
            :
            null
            }
-            
-            <div className="">
+            {
+                post.ImagePost !== "" ? (
+                     <div className="">
                  <img src={post.ImagePost} alt={post.Description} className="object-cover w-7/12   rounded-sm m-auto "/>
             </div>
+                )
+                : 
+                null
+            }
+           
           </div>
-        
-          {/* {    
-          likes ?
 
-             <div>
-                    <button className="bg-blue-800  mt-2 transition-all delay-150 duration-300 rounded-md text-white ml-8 py-1 px-3">
-                        Te gusta
-                    </button>
-                </div>
-      
-                :
-                    <div className=" ">
-         <button className="bg-white  mt-2 hover:bg-gray-400 transition-all delay-150 duration-300 rounded-md text-black ml-8 py-1 px-3" onClick={ () => handleLike( post.User.ID, post.ID)}>Me gusta</button>
-                </div>
-        
-             }
-        */}
-
-         
-               <div className="p-6">
+               <div className="p-4">
                    <div className=" p-2 flex  gap-2 mt-5">
                     <form onSubmit={(e) => handleSubmitComments(e, post.User.ID, post.ID)} className="flex  w-full gap-2">
                     <img src={profile.image} alt="perfil" className="w-12 rounded-full h-12" />
@@ -186,7 +183,7 @@ const AllPost = () => {
                            </div>
                </div>
                  {post.Comments.map((comment) => (
-                <div key={comment.ID} className="flex ml-10 border border-gray-800 bg-slate-900  white flex-col w-7/12  shadow-xl p-2  text-white">
+                <div key={comment.ID} className="flex ml-16 border border-gray-700 rounded-md mb-1  bg-slate-900  white flex-col w-7/12  shadow-xl p-2  text-white">
                         <div className=" p-2 border-gray-800">
                             <div className=" flex items-center p-1 gap-2 ">
                                <img src={post.User.Image} alt="img-user"  className="rounded-full  w-8 h-8"/>
