@@ -1,7 +1,7 @@
 import {create} from "zustand";
 import { persist } from "zustand/middleware";
 import { createUser } from "../interface/user";
-import { createCommentsRequest, createLikeRequest, getLikeCount, registerRequest } from "../api/auth";
+import { createCommentsRequest, createLikeRequest, registerRequest } from "../api/auth";
 import { createPost } from "../interface/post";
 import { createPostRequest } from "../api/auth";
 import { createComments } from "../interface/comments";
