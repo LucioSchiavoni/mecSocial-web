@@ -117,12 +117,3 @@ export const createLikeRequest = async (data: createLike) => {
     }
 }
 
-export const getLikeCount = async (postID: string, userID: string) => {
-    
-    try {
-         const res = clienteAxios.get(`/${postID}/likes/${userID}`)
-        return res
-    } catch (error) {
-        console.log("Error del fetch del contador de like: ",error)
-    }
-}

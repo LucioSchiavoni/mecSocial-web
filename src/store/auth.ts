@@ -33,19 +33,19 @@ export const useAuthStore = create(persist<State & Actions>(
         profile: null,
         isAuth: false,
 
-        setToken: (token: string) => set((state) => ({
+        setToken: (token: string) => set(() => ({
             token,
             isAuth: true
         })),
 
-        setProfile: (profile: any) => set(state => ({
+        setProfile: (profile: any) => set(() => ({
             profile
         })),
 
         register: async (user: createUser) => {
             try {
                 const res = await registerRequest(user)
-             
+                console.log(res)
             } catch (error) {
                 console.log("Error del estado del registro: ", error)
             }
@@ -54,7 +54,7 @@ export const useAuthStore = create(persist<State & Actions>(
         createPost: async (post: createPost) => {
             try{
                 const res = await createPostRequest(post)
-                
+                console.log(res)
             }catch(error){
                 console.log(error)
             }
@@ -63,7 +63,7 @@ export const useAuthStore = create(persist<State & Actions>(
         createComments: async (comments: createComments) => {
             try {
                 const res = await createCommentsRequest(comments)
-
+                console.log(res)
             } catch (error) {
                 console.log("Error en el state: ",error)
             }
@@ -71,13 +71,13 @@ export const useAuthStore = create(persist<State & Actions>(
         createLike: async (likes: createLike) => {
             try {
                 const res = await createLikeRequest(likes)
-
+                console.log(res)
             } catch (error) {
                 console.log(error)
             }
         },
 
-        logout: () => set(state => ({
+        logout: () => set(() => ({
             token: '',
             isAuth: false,
             profile: null
