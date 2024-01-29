@@ -2,6 +2,7 @@ import { loginData, loginRequest } from "../api/auth"
 import { useAuthStore } from "../store/auth"
 import { Link, useNavigate } from "react-router-dom"
 import img from '../assets/logo-mec.jpg'
+import { useState } from "react"
 
 const Login = () => {
 
@@ -10,6 +11,7 @@ const Login = () => {
     const setProfile =  useAuthStore(state => state.setProfile)
 
     const navigate = useNavigate()
+    const [message, setMessage] = useState<Boolean>(false)
 
     const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -18,18 +20,25 @@ const Login = () => {
         
 
         try {
-         
-        const res = await loginRequest(email, password)
-        setToken(res.data)
-     
+            const res = await loginRequest(email, password);
 
-        const data = await loginData()
-
-        setProfile(data)
-       
-        navigate("/auth")
+            if (res.data.status === 401) {
+                setMessage(true);
+               
+            } else {
+                setToken(res.data);
+                const data = await loginData();
+                setProfile(data);
+                navigate("/auth");
+            }
         } catch (error) {
-            console.log("Error del try del Login: " ,error)
+            console.log("Error en el bloque try de Login:", error);
+            setMessage(true)
+            setTimeout(() =>{
+                setMessage(false)
+            } ,3000)
+        
+            
         }
     }
 
@@ -37,12 +46,18 @@ const Login = () => {
 
 <section className="bg-slate-900">
     <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
-    
+
+
         <form onSubmit={handleSubmit} className="w-full max-w-md">
+
                 <img className="rounded-full w-64 m-auto" src={img} alt="logo"/>
-
-            <h1 className="mt-3 text-4xl font-semibold text-white capitalize text-center dark:text-white">Inicia sesión</h1>
-
+         <h1 className="mt-3 text-4xl font-semibold text-white capitalize text-center dark:text-white">Inicia sesión</h1>
+         {
+    message && (
+    <div className="mb-4 text-center text-red-600 p-2 rounded-md">
+        <p className="text-xl">Contraseña incorrecta. inténtalo de nuevo.</p>
+    </div>
+)}
             <div className="relative flex items-center mt-8">
                 <span className="absolute">
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">

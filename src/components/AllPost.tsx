@@ -49,7 +49,7 @@ const AllPost = () => {
         try {
             const res = await clienteAxios.get<PostData[]>("/AllPost");
             setPosts(res.data);
-           console.log(res.data)
+     
         } catch (error) {
             console.log(error);
         }
@@ -126,7 +126,7 @@ const AllPost = () => {
  
 <div className="w-full min-h-screen  shadow-xl">
         <CreatePost/>
-       <div className="grid grid-cols-1 gap-5 overscroll-contain divide-white">
+       <div className="grid grid-cols-1 gap-5 overscroll-contain ">
               {
               !posts == null ? 
           
@@ -135,13 +135,13 @@ const AllPost = () => {
               :
 
               posts.map((post) => (
-           <div key={post.ID} className="flex justify-between flex-col shadow-xl    h-auto rounded-sm "> 
+           <div key={post.ID} className="flex justify-between flex-col shadow-xl  border dark:border-slate-800  h-auto rounded-sm "> 
           <div>
               <div className="flex p-4 gap-2 ">
                 {
                     post.User.Image ?  
                 (
-                <img src={post.User.Image} alt="usuario" className="object-cover w-16  rounded-md aspect-square " />
+                <img src={post.User.Image} alt="usuario" className="object-cover w-16   rounded-md aspect-square " />
                 )
                 :
                 null
@@ -149,7 +149,7 @@ const AllPost = () => {
           
             <div className="flex ">
            <p className="font-semibold py-1 text-xl capitalize">{post.User.Username}</p>
-            <span className="text-gray-200 p-1.5 px-4 ml-2">{post.CreatedAt.slice(0,10)}</span>
+            <span className="dark:text-gray-200 text-gray-600 p-1.5 px-4 ml-2">{post.CreatedAt.slice(0,10)}</span>
             </div>
            </div>
           
@@ -163,7 +163,7 @@ const AllPost = () => {
            }
             {
                 post.ImagePost !== "" ? (
-                     <div className="">
+                     <div className="border-t border-slate-600 border-b">
                  <img src={post.ImagePost} alt={post.Description} className="object-cover w-7/12   rounded-sm m-auto "/>
             </div>
                 )
@@ -183,12 +183,12 @@ const AllPost = () => {
                            </div>
                </div>
                  {post.Comments.map((comment) => (
-                <div key={comment.ID} className="flex ml-16 border border-gray-700 rounded-md mb-1  bg-slate-900  white flex-col w-7/12  shadow-xl p-2  text-white">
+                <div key={comment.ID} className="flex ml-16 border-t dark:border-slate-600  mb-1 bg-white text-black  dark:bg-slate-900  white flex-col w-7/12  shadow-xl p-2  dark:text-white">
                         <div className=" p-2 border-gray-800">
                             <div className=" flex items-center p-1 gap-2 ">
                                <img src={post.User.Image} alt="img-user"  className="rounded-full  w-8 h-8"/>
                     <p className="font-bold capitalize"> {comment.User.Username}</p> 
-                    <p className="text-gray-400 ml-4">{comment.CreatedAt.slice(0, 10)}</p>
+                    <p className="dark:text-gray-400 text-gray-700  ml-4">{comment.CreatedAt.slice(0, 10)}</p>
                             </div>
                     <p className="ml-12 p-2 text-xl">{comment.Content}</p>
                         </div>

@@ -1,5 +1,5 @@
 
-
+import { CiImageOn } from "react-icons/ci";
 import { useAuthStore } from "../store/auth"
 import { useRef } from "react"
 
@@ -30,9 +30,10 @@ try {
   }
 
 
+
   return (
-    <div className="w-full  divide-slate-200  py-7 space-y-2  rounded-md ">     
-        <form onSubmit={handleSubmit} className="flex space-y-2 flex-col border rounded-md border-double border-slate-600 p-2">
+    <div className="w-full   py-7 space-y-2  rounded-md ">     
+        <form onSubmit={handleSubmit} className="flex space-y-2 flex-col border rounded-md border-double dark:border-slate-600 p-2">
 <div className=" ">
   <div className="flex gap-1">
       <img src={userData.image} alt="" className="w-12 h-12 rounded-full object-cover aspect-square" />
@@ -41,7 +42,13 @@ try {
   </div>
 
             <div className="ml-12 flex justify-between  p-2  ">
-                <input type="file" ref={imageRef} className="ml-3" /> 
+          <div className="flex gap-5 ">
+            <span className="text-3xl text-sky-400">
+               <CiImageOn  /> 
+            </span>
+          <input type="file" ref={imageRef} className="" />
+          </div>
+      
           <button className="bg-blue-800 w-64  rounded-md hover:bg-blue-700 text-white px-3 py-1 shadow-xl">Publicar</button>
             </div>
         

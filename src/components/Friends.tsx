@@ -3,6 +3,7 @@ import clienteAxios from "../libs/axios"
 import NotificationButton from "./NotificationButton";
 
 
+
 const Friends = () => {
 
   type DataUser = {
@@ -13,13 +14,14 @@ const Friends = () => {
   };
 
 
+
   const [user, setUser] = useState<DataUser[]>()
 
   const getUsers = async () : Promise<any> => {
     try {
       const res = await clienteAxios.get<DataUser[]>("/allUser")
       setUser(res.data)
-      console.log(res.data)
+      
   
     } catch (error) {
       console.log(error)
@@ -31,8 +33,14 @@ const Friends = () => {
   },[])
 
   return (
-    <div className=" p-4 w-5/12 flex flex-col mt-5  font-semibold gap-10">
-      <NotificationButton/>
+    <div className=" p-4 w-5/12 flex flex-col mt-5   font-semibold gap-10">
+      
+      <div className="flex gap-10">
+          <NotificationButton/>
+
+    
+      </div>
+    
       <p className="text-2xl leading-3 py-2">Amigos : </p>
       {
         user ?
@@ -46,10 +54,10 @@ const Friends = () => {
      </div>
 <div className="text-gray-300 flex-col flex gap-3">
        
-        <p className="text-white text-xl capitalize">{item.Username}</p>
+        <p className="text-black dark:text-white text-xl capitalize ">{item.Username}</p>
         
    
-          <p>{item.Description}</p>
+          <p className="text-gray-600">{item.Description}</p>
         </div>
      
         </div> 

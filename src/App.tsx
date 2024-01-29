@@ -7,6 +7,7 @@ import { ProtectedRoute } from './components/ProtectedRoute'
 import { useAuthStore } from './store/auth'
 import ForgetPassword from './pages/ForgetPassword'
 import ProfilePage from './pages/ProfilePage'
+import ConfigPage from './pages/ConfigPage'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
 <Route element={<ProtectedRoute isAllowed={isAuth} />} >
   <Route path='/auth' element={<HomeAuth/>}/>
  <Route path='/profilePage' element={<ProfilePage/>}/>
+ <Route path='/config' element={<ConfigPage/>}/>
 </Route>
      
 

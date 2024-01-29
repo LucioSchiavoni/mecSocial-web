@@ -31,11 +31,11 @@ export const registerRequest = async (data: createUser): Promise<any> => {
     formData.append('description', data.description || '') 
     
     if(data.image){
-        formData.append('image', data.image, data.image.name)
+        formData.append('image', data.image, data.image.name || '')
     }
     
     if(data.image_Bg){
-        formData.append('image_bg', data.image_Bg, data.image_Bg.name)
+        formData.append('image_bg', data.image_Bg, data.image_Bg.name || '')
     }
     try {
         const res = await clienteAxios.post("/user", formData, {

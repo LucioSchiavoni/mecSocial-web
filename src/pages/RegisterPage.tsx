@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAuthStore } from "../store/auth"
 import { Link, useNavigate } from "react-router-dom";
 
@@ -10,6 +10,7 @@ const RegisterPage =  () => {
   const imageRef = useRef<HTMLInputElement>(null);
   const imageBgRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate()
+  const [message, setMessage] = useState<boolean>(false)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -19,7 +20,16 @@ const RegisterPage =  () => {
   const description = (e.currentTarget.elements[3] as HTMLInputElement).value;
     const imageFile = imageRef.current?.files?.[0];
     const imageBgFile = imageBgRef.current?.files?.[0];
-  await register({username, email, password, description,  image: imageFile || null , image_Bg: imageBgFile || null})
+
+    try {
+          await register({username, email, password, description,  image: imageFile || null , image_Bg: imageBgFile || null})
+          setMessage(true)
+          setTimeout(() => {
+            setMessage(false)
+          } ,3000)
+    } catch (error) { 
+        console.log(error)
+    }
   }
 
   useEffect(() => {
@@ -34,7 +44,7 @@ const RegisterPage =  () => {
  <section className="bg-slate-900">
 
     <div className="flex justify-center min-h-screen">  
-   
+    
         <div className="hidden bg-cover lg:block lg:w-2/5 bg-[url(https://cdn.elobservador.com.uy/032021/1614904377786/_LCM2004.JPG)]" >
         </div>
  <Link to='/' className="absolute top-10 left-10 bg-blue-700 text-white font-semibold px-3 py-1 rounded-md text-xl hover:bg-blue-600">
@@ -78,9 +88,17 @@ const RegisterPage =  () => {
                             </span>
                         </button>
                     </div>
-                </div>
+                </div>    {
+                        message && (
+                            <div className="mt-5 text-xl text-center font-semibold text-white bg-slate-800 px-3 py-2 rounded-md">
+                                <p>Usuario registrado correctamente!</p>
+                            </div>
+                        )
+                    }
 
                 <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
+
+                
                     <div>
                         <label className="block mb-2 text-sm  text-white dark:text-gray-200">Nombres</label>
                         <input type="text" placeholder="Ej: Manolo Lamas" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
@@ -105,13 +123,13 @@ const RegisterPage =  () => {
                     <div>
     <label htmlFor="image" className="block text-sm text-white dark:text-gray-300">Foto de perfil</label>
 
-    <input type="file" ref={imageRef} className="block w-full px-3 py-2 mt-2 text-sm text-gray-600 bg-white border border-gray-200 rounded-lg file:bg-gray-200 file:text-gray-700 file:text-sm file:px-4 file:py-1 file:border-none file:rounded-full dark:file:bg-gray-800 dark:file:text-gray-200 dark:text-gray-300 placeholder-gray-400/70 dark:placeholder-gray-500 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:focus:border-blue-300" />
+    <input type="file" ref={imageRef} required className="block w-full px-3 py-2 mt-2 text-sm text-gray-600 bg-white border border-gray-200 rounded-lg file:bg-gray-200 file:text-gray-700 file:text-sm file:px-4 file:py-1 file:border-none file:rounded-full dark:file:bg-gray-800 dark:file:text-gray-200 dark:text-gray-300 placeholder-gray-400/70 dark:placeholder-gray-500 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:focus:border-blue-300" />
 </div>
                     
             <div>
     <label htmlFor="image" className="block text-sm text-white dark:text-gray-300">Foto de portada</label>
 
-    <input type="file" ref={imageBgRef} className="block w-full px-3 py-2 mt-2 text-sm text-gray-600 bg-white border border-gray-200 rounded-lg file:bg-gray-200 file:text-gray-700 file:text-sm file:px-4 file:py-1 file:border-none file:rounded-full dark:file:bg-gray-800 dark:file:text-gray-200 dark:text-gray-300 placeholder-gray-400/70 dark:placeholder-gray-500 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:focus:border-blue-300" />
+    <input type="file" required ref={imageBgRef} className="block w-full px-3 py-2 mt-2 text-sm text-gray-600 bg-white border border-gray-200 rounded-lg file:bg-gray-200 file:text-gray-700 file:text-sm file:px-4 file:py-1 file:border-none file:rounded-full dark:file:bg-gray-800 dark:file:text-gray-200 dark:text-gray-300 placeholder-gray-400/70 dark:placeholder-gray-500 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:focus:border-blue-300" />
 </div>
                     <button type="submit"
                         className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transhtmlForm bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
