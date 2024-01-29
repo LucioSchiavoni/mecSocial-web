@@ -46,7 +46,7 @@ const Friends = () => {
      </div>
 <div className="text-gray-300 flex-col flex gap-3">
        
-        <p className="text-white text-xl">{item.Username}</p>
+        <p className="text-white text-xl capitalize">{item.Username}</p>
         
    
           <p>{item.Description}</p>

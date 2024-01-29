@@ -53,7 +53,7 @@ const NotificationButton = () => {
   <div className="py-2 w-9/12 shadow-xl">
       {
         notifications.map((item) => (
-             <a href="#" className="flex items-center px-4 py-3 -mx-2 transition-colors duration-300 transform border-b  bg-slate-700  rounded-md">
+             <a href="#" key={item.ID} className="flex items-center px-4 py-3 -mx-2 transition-colors duration-300 transform border-b  bg-slate-700  rounded-md">
                 <img className="flex-shrink-0 object-cover w-8 h-8 mx-1 rounded-full" src={item.Creator.Image} alt="avatar" />
                 <p className="mx-2 text-sm text-gray-600 dark:text-white"><span className="font-bold" >{item.Creator.Username}</span> comento tu publicación <span className="text-blue-500 hover:underline " >"{item.Post.Description}"</span>. 2m</p>
             </a>
