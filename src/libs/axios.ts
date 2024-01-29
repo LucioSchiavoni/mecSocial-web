@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useAuthStore } from '../store/auth'
 
-const URL = "http://localhost:8080"
+const URL = import.meta.env.VITE_URL
 
 
 const clienteAxios = axios.create({
