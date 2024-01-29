@@ -55,7 +55,7 @@ const Login = () => {
          {
     message && (
     <div className="mb-4 text-center text-red-600 p-2 rounded-md">
-        <p className="text-xl">Contraseña incorrecta. inténtalo de nuevo.</p>
+        <p className="text-xl">Datos incorrectos. inténtalo de nuevo.</p>
     </div>
 )}
             <div className="relative flex items-center mt-8">
