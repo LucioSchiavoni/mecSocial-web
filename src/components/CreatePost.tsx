@@ -22,6 +22,7 @@ const CreatePost = () => {
    
 try {
   const response = await createPost({ description, imagePost: imageFile || null, userID: idStr }) as any;
+  console.log(response)
   window.location.reload()
 } catch (error) {
   console.error("Error al crear post:", error);
