@@ -26,7 +26,7 @@ const RegisterPage =  () => {
           setMessage(true)
           setTimeout(() => {
             setMessage(false)
-          } ,3000)
+          },3000)
     } catch (error) { 
         console.log(error)
     }
