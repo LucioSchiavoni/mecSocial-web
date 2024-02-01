@@ -1,11 +1,12 @@
 import {create} from "zustand";
 import { persist } from "zustand/middleware";
 import { createUser } from "../interface/user";
-import { createCommentsRequest, createLikeRequest, registerRequest } from "../api/auth";
+import { createCommentsRequest, createLikeRequest, registerRequest, updateUserRequest } from "../api/auth";
 import { createPost } from "../interface/post";
 import { createPostRequest } from "../api/auth";
 import { createComments } from "../interface/comments";
 import { createLike } from "../interface/likes";
+import { updateUser } from "../interface/updateUser";
 
 type State = {
     token: string;
@@ -21,7 +22,7 @@ type Actions = {
     createPost: (post: createPost) => void
     createComments: (comments: createComments) => void
     createLike: (likes: createLike) => void
-    
+    updateUser: (updateUser: updateUser) => void
 }
 
 
@@ -76,7 +77,14 @@ export const useAuthStore = create(persist<State & Actions>(
                 console.log(error)
             }
         },
-
+        updateUser: async (user: updateUser) => {
+            try {
+                const res = await updateUserRequest(user)
+                console.log(res)      
+            } catch (error) {
+                console.log(error)
+            }
+        },
         logout: () => set(() => ({
             token: '',
             isAuth: false,

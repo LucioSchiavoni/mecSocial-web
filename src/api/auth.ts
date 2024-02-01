@@ -1,6 +1,7 @@
 import { createComments } from "../interface/comments";
 import { createLike } from "../interface/likes";
 import { createPost } from "../interface/post";
+import { updateUser } from "../interface/updateUser";
 import { createUser } from "../interface/user";
 import clienteAxios from "../libs/axios";
 
@@ -117,3 +118,37 @@ export const createLikeRequest = async (data: createLike) => {
     }
 }
 
+export const updateUserRequest = async (data: updateUser): Promise<any> => {
+
+    const formData = new FormData()
+
+    if(data.username) {
+        formData.append('username', data.username)
+    }
+    if(data.description) {
+        formData.append('description', data.description)
+    }
+
+    if(data.password){
+        formData.append('password', data.password)
+    }
+
+    if(data.image){
+        formData.append('image', data.image, data.image.name)
+    }
+    
+    if(data.image_Bg){
+        formData.append('image_bg', data.image_Bg, data.image_Bg.name)
+    }
+
+    try {
+        const res = await clienteAxios.put(`/user/${data.id}`, formData, {
+            headers : {
+                'Content-Type': 'multipart/form-data',
+            }
+        })
+        return res.data
+    } catch (error) {
+        console.log("Error en el fetch del update: ", error)
+    }
+}
