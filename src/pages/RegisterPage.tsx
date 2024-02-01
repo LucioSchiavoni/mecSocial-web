@@ -1,15 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import {  useRef, useState } from "react";
 import { useAuthStore } from "../store/auth"
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 
 const RegisterPage =  () => {
 
   const register = useAuthStore((state) => state.register)
-  const isAuth = useAuthStore((state) => state.isAuth)
+//   const isAuth = useAuthStore((state) => state.isAuth)
   const imageRef = useRef<HTMLInputElement>(null);
   const imageBgRef = useRef<HTMLInputElement>(null);
-  const navigate = useNavigate()
+//   const navigate = useNavigate()
   const [message, setMessage] = useState<boolean>(false)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
