@@ -181,9 +181,11 @@ const AllPost = () => {
                           <button type="submit" className="bg-blue-900 hover:bg-blue-700 rounded-md text-white text-center text-3xl font-bold px-3 py-1  w-auto h-[39px]  mt-2"><IoSend /></button>
                           </form>
                            </div>
+
+
               
                  {post.Comments.map((comment) => (
-                <div key={comment.ID} className="flex border-t border-gray-500 dark:bg-slate-900   rounded-sm  0  mb-1 text-black bg-white  white flex-col   shadow-xl  dark:text-white">
+                <div key={comment.ID} className="flex border-t  border-gray-800 dark:bg-slate-900   rounded-sm   text-black bg-white  white flex-col   shadow-xl  dark:text-white">
                         <div className=" p-2 border-gray-800">
                             <div className=" flex items-center p-1 gap-2 ">
                                <img src={comment.User.Image} alt="img-user"  className="rounded-full  w-8 h-8"/>
@@ -198,7 +200,8 @@ const AllPost = () => {
                   
                        </div>
                    ))} 
-           </div>
+                   </div>
+  
 
    </div>
        ))}
