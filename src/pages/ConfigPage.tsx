@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import Layout from "../components/Layout"
 import { useAuthStore } from "../store/auth"
-import { useEffect, useRef } from "react"
+import { useRef } from "react"
 import { updateUser } from "../interface/updateUser"
 import { useState } from "react"
 
@@ -59,11 +59,7 @@ const ConfigPage = () => {
     
       }
   }
-useEffect(() =>(
 
-  console.log("Profile:", profile)
- 
-), [])
 
 
   return (
