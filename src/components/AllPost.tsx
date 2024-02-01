@@ -3,6 +3,7 @@ import clienteAxios from "../libs/axios";
 import CreatePost from "./CreatePost";
 import { useAuthStore } from "../store/auth";
 import { IoSend } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 
 const AllPost = () => {
@@ -49,7 +50,7 @@ const AllPost = () => {
         try {
             const res = await clienteAxios.get<PostData[]>("/AllPost");
             setPosts(res.data);
-     
+        
         } catch (error) {
             console.log(error);
         }
@@ -128,7 +129,7 @@ const AllPost = () => {
         <CreatePost/>
        <div className="grid grid-cols-1 gap-5 overscroll-contain mb-5">
               {
-              !posts == null ? 
+              posts == null ? 
           
                 <p className="text-white text-4xl font-bold text-center">Cargando...</p>
             
@@ -148,7 +149,7 @@ const AllPost = () => {
                 }
           
             <div className="flex ">
-           <p className="font-semibold py-1 text-xl capitalize">{post.User.Username}</p>
+           <Link to={`/profilePage/${post.User.ID}`} className="font-semibold py-1 text-xl capitalize hover:underline">{post.User.Username}</Link>
             <span className="dark:text-gray-200 text-gray-600 p-1.5 px-4 ml-2">{post.CreatedAt.slice(0,10)}</span>
             </div>
            </div>
@@ -189,7 +190,7 @@ const AllPost = () => {
                         <div className=" p-2 border-gray-800">
                             <div className=" flex items-center p-1 gap-2 ">
                                <img src={comment.User.Image} alt="img-user"  className="rounded-full  w-8 h-8"/>
-                    <p className="font-semibold   capitalize"> {comment.User.Username}</p> 
+                    <Link to={`/profilePage/${comment.User.ID}`} className="font-semibold hover:underline  capitalize"> {comment.User.Username}</Link> 
                     <p className="dark:text-gray-400 text-gray-700  ml-4">{comment.CreatedAt.slice(0, 10)}</p>
                             </div>
                     <p className="ml-12 p-2 text-xl">{comment.Content}</p>

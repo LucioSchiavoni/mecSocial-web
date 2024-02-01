@@ -23,8 +23,9 @@ function App() {
 
 <Route element={<ProtectedRoute isAllowed={isAuth} />} >
   <Route path='/auth' element={<HomeAuth/>}/>
- <Route path='/profilePage' element={<ProfilePage/>}/>
+ <Route path='/profilePage/:ID' element={<ProfilePage/>}/>
  <Route path='/config' element={<ConfigPage/>}/>
+ 
 </Route>
      
 

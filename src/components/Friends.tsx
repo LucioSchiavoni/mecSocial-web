@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import clienteAxios from "../libs/axios"
 import NotificationButton from "./NotificationButton";
 import { FaUserFriends } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 
 const Friends = () => {
@@ -41,7 +42,7 @@ const Friends = () => {
     
       </div>
     
-      <p className="text-2xl flex items-center gap-2 leading-3 py-2"><FaUserFriends />Usuarios en Mec </p>
+      <p className="text-2xl flex items-center gap-2 leading-3 py-2 "><FaUserFriends />Usuarios en Mec </p>
       {
         user ?
     (
@@ -54,9 +55,9 @@ const Friends = () => {
      </div>
 <div className="text-gray-300 flex-col flex gap-3">
        
-        <p className="text-black dark:text-white text-xl capitalize ">{item.Username}</p>
+        <Link to={`/profilePage/${item.ID}`} className="text-black dark:text-white text-xl capitalize hover:underline">{item.Username}</Link>
         
-   
+      
           <p className="text-gray-600">{item.Description}</p>
         </div>
      
