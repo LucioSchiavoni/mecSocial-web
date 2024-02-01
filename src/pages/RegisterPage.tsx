@@ -32,11 +32,7 @@ const RegisterPage =  () => {
     }
   }
 
-  useEffect(() => {
-    if (isAuth){
-      navigate("/")
-    }
-  },[isAuth])
+
 
   return (
 
