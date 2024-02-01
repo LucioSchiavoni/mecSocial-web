@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import clienteAxios from "../libs/axios";
 import CreatePost from "./CreatePost";
 import { useAuthStore } from "../store/auth";
-
+import { IoSend } from "react-icons/io5";
 
 
 const AllPost = () => {
@@ -135,7 +135,7 @@ const AllPost = () => {
               :
 
               posts.map((post) => (
-           <div key={post.ID} className="flex justify-between flex-col shadow-xl  border dark:border-slate-800  h-auto rounded-sm "> 
+           <div key={post.ID} className="flex glass justify-between flex-col shadow-xl  border dark:border-slate-800  h-auto rounded-sm "> 
           <div>
               <div className="flex p-4 gap-2 ">
                 {
@@ -155,7 +155,7 @@ const AllPost = () => {
           
            { 
            post.Description !== "" ? (
-<p className="ml-28 py-3 text-xl">{post.Description}</p>
+<p className="px-24 py-2 text-2xl">{post.Description}</p>
             
            )
            :
@@ -173,21 +173,21 @@ const AllPost = () => {
            
           </div>
 
-               <div className="p-4">
-                   <div className=" p-2 flex  gap-2 mt-5">
+               <div className="glass rounded-md p-2 w-full m-auto">
+                   <div className="  w-full  gap-2 mt-5">
                     <form onSubmit={(e) => handleSubmitComments(e, post.User.ID, post.ID)} className="flex  w-full gap-2">
                     <img src={profile.image} alt="perfil" className="w-12 rounded-full h-12" />
-                            <input type="text" className="px-3 rounded-md focus:outline-none focus:border-sky-900 focus:border focus:ring-2 mb-2 py-3 w-6/12 bg-slate-700 text-white" placeholder="Escribe un comentario.." />
-                          <button type="submit" className="bg-blue-800 hover:bg-blue-700 rounded-md text-white px-3 py-1 w-24 h-8  mt-2">Enviar</button>
+                            <input type="text" className="px-3 rounded-md focus:outline-none focus:border-sky-900 focus:border focus:ring-2 mb-2 py-3 w-10/12 bg-slate-700 text-white" placeholder="Escribe un comentario.." />
+                          <button type="submit" className="bg-blue-900 hover:bg-blue-700 rounded-md text-white text-center text-3xl font-bold px-3 py-1  w-auto h-[39px]  mt-2"><IoSend /></button>
                           </form>
                            </div>
-               </div>
+              
                  {post.Comments.map((comment) => (
-                <div key={comment.ID} className="flex ml-16 border-t dark:border-slate-600  mb-1 bg-white text-black  dark:bg-slate-900  white flex-col w-7/12  shadow-xl p-2  dark:text-white">
+                <div key={comment.ID} className="flex border-t border-gray-500 dark:bg-slate-900   rounded-sm  0  mb-1 text-black bg-white  white flex-col   shadow-xl  dark:text-white">
                         <div className=" p-2 border-gray-800">
                             <div className=" flex items-center p-1 gap-2 ">
                                <img src={comment.User.Image} alt="img-user"  className="rounded-full  w-8 h-8"/>
-                    <p className="font-bold capitalize"> {comment.User.Username}</p> 
+                    <p className="font-semibold   capitalize"> {comment.User.Username}</p> 
                     <p className="dark:text-gray-400 text-gray-700  ml-4">{comment.CreatedAt.slice(0, 10)}</p>
                             </div>
                     <p className="ml-12 p-2 text-xl">{comment.Content}</p>
@@ -199,10 +199,11 @@ const AllPost = () => {
                        </div>
                    ))} 
            </div>
+
+   </div>
        ))}
    </div>
        </div>
-
   )
 }
 

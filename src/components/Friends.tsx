@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import clienteAxios from "../libs/axios"
 import NotificationButton from "./NotificationButton";
-
+import { FaUserFriends } from "react-icons/fa";
 
 
 const Friends = () => {
@@ -41,7 +41,7 @@ const Friends = () => {
     
       </div>
     
-      <p className="text-2xl leading-3 py-2">Amigos : </p>
+      <p className="text-2xl flex items-center gap-2 leading-3 py-2"><FaUserFriends />Usuarios en Mec </p>
       {
         user ?
     (
