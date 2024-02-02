@@ -125,7 +125,7 @@ const AllPost = () => {
 
   return (
  
-<div className="w-full min-h-screen  shadow-xl">
+<div className="w-full min-h-screen  ">
         <CreatePost/>
        <div className="grid grid-cols-1 gap-5 overscroll-contain mb-5">
               {
@@ -140,7 +140,7 @@ const AllPost = () => {
               :
 
               posts.map((post) => (
-           <div key={post.ID} className="flex glass justify-between flex-col shadow-xl  border dark:border-slate-800  h-auto rounded-sm "> 
+           <div key={post.ID} className="flex dark:glass bg-slate-100  justify-between flex-col shadow-xl  border dark:border-slate-800  h-auto rounded-md "> 
           <div>
               <div className="flex p-4 gap-2 ">
                 {
@@ -178,7 +178,7 @@ const AllPost = () => {
            
           </div>
 
-               <div className="glass rounded-md p-2 w-full m-auto">
+               <div className=" rounded-md p-2 w-full m-auto">
                    <div className="  w-full  gap-2 mt-5">
                     <form onSubmit={(e) => handleSubmitComments(e, post.User.ID, post.ID)} className="flex  w-full gap-2">
                     <img src={profile.image} alt="perfil" className="w-12 rounded-full h-12" />
@@ -190,7 +190,7 @@ const AllPost = () => {
 
               
                  {post.Comments.map((comment) => (
-                <div key={comment.ID} className="flex border-t  border-gray-800 dark:bg-slate-900   rounded-sm   text-black bg-white  white flex-col   shadow-xl  dark:text-white">
+                <div key={comment.ID} className="flex border-t  border-gray-300 dark:border-gray-800 dark:bg-slate-900  rounded-md  text-black bg-white  white flex-col    dark:text-white">
                         <div className=" p-2 border-gray-800">
                             <div className=" flex items-center p-1 gap-2 ">
                                <img src={comment.User.Image} alt="img-user"  className="rounded-full  w-8 h-8"/>
