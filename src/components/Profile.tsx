@@ -26,7 +26,7 @@ const Profile = () => {
 
     <p className="mt-2 text-gray-400 ">{profile.description}</p>
     <ul className="p-8 grid grid-cols-1 text-2xl gap-10 ">
-    <Link to='/config' className="px-3 py-1 rounded-md hover:bg-slate-700  items-center flex justify-center gap-2">Configuración<GrConfigure /></Link>
+    <Link to='/config' className="px-3 py-1 rounded-md dark:hover:bg-slate-700  hover:bg-gray-200 items-center flex justify-center gap-2">Configuración<GrConfigure /></Link>
 
 
      
