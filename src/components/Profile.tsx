@@ -3,7 +3,6 @@ import { useAuthStore } from "../store/auth"
 import { GrConfigure } from "react-icons/gr";
 import DarkMode from "./DarkMode";
 import { SlLogout } from "react-icons/sl";
-import { DialogDemo } from "./EditProfile";
 
 
 const Profile = () => {
@@ -32,7 +31,9 @@ const Profile = () => {
 
      
     </ul>
-    {/* <DialogDemo/> */}
+    
+
+
 
 
     </div>

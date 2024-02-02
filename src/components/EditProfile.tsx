@@ -11,11 +11,11 @@ import {
 import { Input } from "../../@/components/ui/input"
 import { Label } from "../../@/components/ui/label"
 
-export function DialogDemo() {
+const EditProfile = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">Edit Profile</Button>
+        <Button variant="outline" >Edit Profile</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
@@ -53,3 +53,5 @@ export function DialogDemo() {
     </Dialog>
   )
 }
+
+export default EditProfile

@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const AllPost = () => {
 
     const [posts, setPosts] = useState<PostData[]>([]);
-
+    const [loading, setLoading] = useState<boolean>(true);
     const profile = useAuthStore((state) => state.profile)
     const createComment = useAuthStore((state) => state.createComments)
    
@@ -50,7 +50,7 @@ const AllPost = () => {
         try {
             const res = await clienteAxios.get<PostData[]>("/AllPost");
             setPosts(res.data);
-        
+            setLoading(false)
         } catch (error) {
             console.log(error);
         }
@@ -129,10 +129,10 @@ const AllPost = () => {
         <CreatePost/>
        <div className="grid grid-cols-1 gap-5 overscroll-contain mb-5">
               {
-              !posts ?
+             loading ?
               
                 <div>
-            <p className="text-3xl text-black">Cargando...</p>
+            <p className="text-2xl dark:text-white text-black text-center items-center mt-24">Cargando publicaciones...</p>
             
           </div>
 
@@ -140,7 +140,7 @@ const AllPost = () => {
               :
 
               posts.map((post) => (
-           <div key={post.ID} className="flex dark:glass bg-slate-100  justify-between flex-col shadow-xl  border dark:border-slate-800  h-auto rounded-md "> 
+           <div key={post.ID} className="flex dark:glass dark:bg-transparent bg-slate-100  justify-between flex-col shadow-xl  border dark:border-slate-800  h-auto rounded-md "> 
           <div>
               <div className="flex p-4 gap-2 ">
                 {
