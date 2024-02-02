@@ -45,7 +45,7 @@ const Friends = () => {
       <p className="text-2xl flex items-center gap-2 leading-3 py-2 "><FaUserFriends />Usuarios en Mec </p>
       {
         user ?
-    (
+    
      user.map((item) => (
 
 
@@ -63,10 +63,6 @@ const Friends = () => {
      
         </div> 
      ))
-    
-   
-     
-    )
         :
         <div>Sin amigos...</div>
       }

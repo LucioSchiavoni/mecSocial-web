@@ -129,10 +129,14 @@ const AllPost = () => {
         <CreatePost/>
        <div className="grid grid-cols-1 gap-5 overscroll-contain mb-5">
               {
-              posts == null ? 
-          
-                <p className="text-white text-4xl font-bold text-center">Cargando...</p>
+              !posts ?
+              
+                <div>
+            <p className="text-3xl text-black">Cargando...</p>
             
+          </div>
+
+                
               :
 
               posts.map((post) => (
