@@ -8,6 +8,7 @@ import { useAuthStore } from './store/auth'
 import ForgetPassword from './pages/ForgetPassword'
 import ProfilePage from './pages/ProfilePage'
 import ConfigPage from './pages/ConfigPage'
+import { ChakraProvider } from '@chakra-ui/react'
 
 function App() {
 
@@ -15,6 +16,9 @@ function App() {
 
   return (
     <>
+    <ChakraProvider>
+
+   
     <BrowserRouter>
     <Routes>
       <Route path='/' element={<Home/>} />
@@ -27,11 +31,9 @@ function App() {
  <Route path='/config' element={<ConfigPage/>}/>
  
 </Route>
-     
-
-
     </Routes>
     </BrowserRouter>
+     </ChakraProvider>
     </>
   )
 }

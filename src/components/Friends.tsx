@@ -3,7 +3,7 @@ import clienteAxios from "../libs/axios"
 import NotificationButton from "./NotificationButton";
 import { FaUserFriends } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import { Box, SkeletonCircle, SkeletonText } from '@chakra-ui/react'
 
 const Friends = () => {
 
@@ -64,7 +64,10 @@ const Friends = () => {
         </div> 
      ))
         :
-        <div>Sin amigos...</div>
+<Box padding='6' boxShadow='md' bg='slate-800'>
+  <SkeletonCircle size='10' />
+  <SkeletonText mt='2' noOfLines={2} spacing='4' skeletonHeight='2' />
+</Box>
       }
     </div>
   )

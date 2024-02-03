@@ -41,19 +41,22 @@ const ProfilePage = () => {
   return (
     <Layout>
       <Link to='/auth' className="bg-white px-3 py-2 text-black rounded-md absolute top-5 left-10">Volver</Link>
-          <div >
+          <div className="flex flex-col " >
             {
               user ? 
              
-                <div key={user.ID} className="flex justify-center items-center flex-col py-24">
-               
+                <div key={user.ID} className="">
+                       <img src={user.ImageBg} alt="perfi" className="w-24" />  
                   <img src={user.Image} alt="perfi" className="w-64 h-40 rounded-md" />
+
                      <p className="text-3xl font-semibold ">{user.Username}</p>
                 </div>
           
               :
               null
             }
+
+
           </div>
     </Layout>
 

@@ -2,7 +2,6 @@ import {  useRef, useState } from "react";
 import { useAuthStore } from "../store/auth"
 import { Link} from "react-router-dom";
 
-
 const RegisterPage =  () => {
 
   const register = useAuthStore((state) => state.register)
@@ -86,9 +85,11 @@ const RegisterPage =  () => {
                     </div>
                 </div>    {
                         message && (
-                            <div className="mt-5 text-xl text-center font-semibold text-white bg-slate-800 px-3 py-2 rounded-md">
-                                <p>Usuario registrado correctamente!</p>
-                            </div>
+<div>
+    <p>Hola</p>
+</div>
+
+
                         )
                     }
 

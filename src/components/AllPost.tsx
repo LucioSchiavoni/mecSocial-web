@@ -4,7 +4,7 @@ import CreatePost from "./CreatePost";
 import { useAuthStore } from "../store/auth";
 import { IoSend } from "react-icons/io5";
 import { Link } from "react-router-dom";
-
+import { CircularProgress } from "@chakra-ui/react";
 
 const AllPost = () => {
 
@@ -131,8 +131,8 @@ const AllPost = () => {
               {
              loading ?
               
-                <div>
-            <p className="text-2xl dark:text-white text-black text-center items-center mt-24">Cargando publicaciones...</p>
+                <div className="flex justify-center items-center mt-24">
+                    <CircularProgress isIndeterminate color='blue.400' />
             
           </div>
 
