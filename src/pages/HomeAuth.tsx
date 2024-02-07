@@ -1,7 +1,8 @@
 import AllPost from "../components/AllPost";
 import Friends from "../components/Friends";
 import Layout from "../components/Layout";
-import Profile from "../components/Profile";
+
+import ProfileSm from "../components/ProfileSm";
 
 
 
@@ -11,7 +12,7 @@ export const HomeAuth = () => {
        <>
         <Layout>
              <div className=" gap-2 justify-between flex ">
-              <Profile/>
+              <ProfileSm/>
             
              <AllPost/>
               <Friends/>

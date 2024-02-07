@@ -67,7 +67,7 @@ const ConfigPage = () => {
         <div className="flex justify-center items-center">
             <Link to='/auth' className="absolute left-10 bg-white text-xl px-3 rounded-md py-1 text-sky-800 hover:bg-gray-200">Atras</Link>
             <div className="mt-24">
-             <form onSubmit={handleSubmit} className="text-black flex flex-col gap-3 p-3 shadow-xl">
+             <form onSubmit={handleSubmit} className="text-black flex flex-col gap-3 shadow-xl bg-white p-4 rounded-md">
 
               {
                 message && (
@@ -76,16 +76,17 @@ const ConfigPage = () => {
                   </div>
                 )
               }
-              <label htmlFor="" className="text-white font-semibold text-xl text-center">Nombres</label>
-                <input type="text" className="px-3 py-1 rounded-md" />
-                <label htmlFor="" className="text-white font-semibold text-xl text-center">Contraseña</label>
+
+              <label htmlFor="" className="text-black font-semibold text-xl text-center">Nombres</label>
+                <input type="text" className="px-3 py-1 rounded-md " />
+                <label htmlFor="" className="text-black font-semibold text-xl text-center">Contraseña</label>
                 <input type="password" className="px-3 py-1 rounded-md"/>
-                <label htmlFor="" className="text-white font-semibold text-xl text-center">Descripcion</label>
-                <input type="text" className="px-3 py-1 rounded-md"/>
-                <label htmlFor="" className="text-white font-semibold text-xl text-center">Foto de perfil</label>
-                <input type="file" ref={imageRef} />
-                <label htmlFor="" className="text-white font-semibold text-xl text-center">Fondo de pantalla</label>
-                <input type="file" ref={imageBgRef}/>
+                <label htmlFor="" className="text-black font-semibold text-xl text-center">Descripcion</label>
+                <input type="text" className="px-3 py-1 rounded-md bg-gray-300"/>
+                <label htmlFor="" className="text-black font-semibold text-xl text-center">Foto de perfil</label>
+                <input type="file" ref={imageRef} className="px-3 py-1 rounded-md" />
+                <label htmlFor="" className="text-black font-semibold text-xl text-center">Fondo de pantalla</label>
+                <input type="file" ref={imageBgRef} className="px-3 py-1 rounded-md "/>
 
               <button type="submit" className="bg-blue-800 py-1 mt-5 text-xl font-semibold rounded-md text-white hover:bg-blue-600">Guardar</button>
              </form>
