@@ -12,10 +12,12 @@ const ProfileSm = () => {
     const logout = useAuthStore((state) => state.logout)
   return (
 
-    <aside className="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
-    <a href="#" className="mx-auto">
-        <DarkMode/>
-    </a>
+    <aside className="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-black dark:border-gray-700">
+<div className="mx-auto">
+           <DarkMode/> 
+</div>
+
+ 
 
     <div className="flex flex-col items-center mt-6 -mx-2">
         <img src={profile.image_bg} alt="bg" className="absolute w-40 object-cover h-32 top-16 rounded-sm border   " />

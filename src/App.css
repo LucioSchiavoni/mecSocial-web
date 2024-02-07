@@ -1,0 +1,4 @@
+.overscroll-contain {
+    max-height: calc(100vh - 200px); /* Ajusta este valor según sea necesario */
+    overflow-y: auto;
+  }

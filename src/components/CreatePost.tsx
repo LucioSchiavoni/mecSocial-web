@@ -38,7 +38,7 @@ try {
 <div className=" ">
   <div className="flex gap-1">
       <img src={userData.image} alt="" className="w-12 h-12 rounded-full object-cover aspect-square" />
-         <textarea className="w-full  h-24 px-6 py-4 rounded-md  resize-none text-white dark:bg-slate-700 bg-slate-100   text-xl focus:outline-double focus:border  focus:border-double focus:border-sky-700  " placeholder="Que estas pensando..">
+         <textarea className="w-full  h-24 px-6 py-4 rounded-md  resize-none text-black dark:text-white dark:bg-slate-700 bg-slate-100   text-xl focus:outline-double focus:border  focus:border-double focus:border-sky-700  " placeholder="Que estas pensando..">
             </textarea>
   </div>
 

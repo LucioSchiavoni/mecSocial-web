@@ -4,7 +4,7 @@ import CreatePost from "./CreatePost";
 import { useAuthStore } from "../store/auth";
 import { IoSend } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import { CircularProgress } from "@chakra-ui/react";
+
 
 const AllPost = () => {
 
@@ -76,61 +76,17 @@ const AllPost = () => {
         }
     }
 
-//    const handleLike = async (userID: number, postID: number) => {
-
-//     const idCreator: string = profile.id.toString()
-//       const postIDStr: string = postID.toString()
-//             const idStr: string = userID.toString()
-            
-
-//       try {
-//         await createLike({userID: idStr, postID: postIDStr, creatorID: idCreator})
-     
-//       } catch (error) {
-//         console.log("Error del handleLike: ", error)
-//       }
-
-  
-//    }
-
-//     const LikeCounter = async (userID: number, postID: number) => {
-//     const postIDStr: string = postID.toString();
-//     const userIDStr: string = userID.toString();
-
-//     try {
-//       const res = await getLikeCount(userIDStr, postIDStr);
-//      if (res !== undefined && res.data !== undefined) {
-//     setLikes(res.data);
-//     setLiked(true)
-//     console.log(res);
-//       }else {
-//         console.log("Likes null")
-//       }
-    
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-
-//   useEffect(() => {
-
-//     posts.forEach((post) => {
-//         const {User, ID} = post;
-//         LikeCounter(User.ID, ID)
-//     })
-//   },[posts])
-
-
- <CircularProgress isIndeterminate color='blue.400' />
-
   return (
  
 <div className="w-full min-h-screen  ">
         <CreatePost/>
-        <aside className="overscroll-auto">
+
 
      
        <div className="grid grid-cols-1 gap-5  mb-5">
+        <div className="overscroll-contain">
+
+     
               {
              loading ?
              <section className="bg-white dark:bg-gray-900">
@@ -156,11 +112,11 @@ const AllPost = () => {
              </div>
          </section>
 
-                
+             
               :
-
+                
               posts.map((post) => (
-           <div key={post.ID} className="flex dark:glass  dark:bg-transparent bg-slate-100  justify-between flex-col shadow-xl  border dark:border-slate-800  h-auto rounded-md "> 
+           <div key={post.ID} className="flex dark:glass mb-10  dark:bg-transparent bg-slate-100  justify-between flex-col shadow-xl  border dark:border-slate-800  h-auto rounded-md "> 
           <div>
               <div className="flex p-4 gap-2 ">
                 {
@@ -172,9 +128,9 @@ const AllPost = () => {
                 null
                 }
           
-            <div className="flex ">
-           <Link to={`/profilePage/${post.User.ID}`} className="font-semibold py-1 text-xl capitalize hover:underline">{post.User.Username}</Link>
-            <span className="dark:text-gray-200 text-gray-600 p-1.5 px-4 ml-2">{post.CreatedAt.slice(0,10)}</span>
+            <div className="flex flex-col ">
+           <Link to={`/profilePage/${post.User.ID}`} className="font-semibold py-1 text-2xl capitalize hover:underline">{post.User.Username}</Link>
+            <span className="dark:text-gray-200 text-gray-600  text-sm">{post.CreatedAt.slice(0,10)}</span>
             </div>
            </div>
           
@@ -213,8 +169,8 @@ const AllPost = () => {
                 <div key={comment.ID} className="flex border-t  border-gray-300 dark:border-gray-800 dark:bg-slate-900  rounded-md  text-black bg-white  white flex-col    dark:text-white">
                         <div className=" p-2 border-gray-800">
                             <div className=" flex items-center p-1 gap-2 ">
-                               <img src={comment.User.Image} alt="img-user"  className="rounded-full  w-8 h-8"/>
-                    <Link to={`/profilePage/${comment.User.ID}`} className="font-semibold hover:underline  capitalize"> {comment.User.Username}</Link> 
+                               <img src={comment.User.Image} alt="img-user"  className="rounded-full  w-10 h-10 "/>
+                    <Link to={`/profilePage/${comment.User.ID}`} className="font-semibold hover:underline text-xl capitalize"> {comment.User.Username}</Link> 
                     <p className="dark:text-gray-400 text-gray-700  ml-4">{comment.CreatedAt.slice(0, 10)}</p>
                             </div>
                     <p className="ml-12 p-2 text-xl">{comment.Content}</p>
@@ -231,7 +187,7 @@ const AllPost = () => {
    </div>
        ))}
    </div>
-   </aside>
+   </div>
        </div>
   )
 }

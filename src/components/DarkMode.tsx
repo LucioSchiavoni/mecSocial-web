@@ -35,7 +35,7 @@ const DarkMode = () => {
 
 
   return (
-    <button onClick={handleTheme} className='hover:bg-slate-800 rounded-full px-2 '>
+    <button onClick={handleTheme} className='hover:bg-slate-200 dark:hover:bg-white dark:hover:text-black rounded-full px-2 '>
         <span className='hidden dark:block text-2xl'><BsSun/></span>
         <span className='dark:hidden text-2xl'><MdOutlineDarkMode/></span>
     </button>
