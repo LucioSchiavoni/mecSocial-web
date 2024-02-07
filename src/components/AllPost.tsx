@@ -121,26 +121,46 @@ const AllPost = () => {
 //   },[posts])
 
 
-
+ <CircularProgress isIndeterminate color='blue.400' />
 
   return (
  
 <div className="w-full min-h-screen  ">
         <CreatePost/>
-       <div className="grid grid-cols-1 gap-5 overscroll-contain mb-5">
+        <aside className="overscroll-auto">
+
+     
+       <div className="grid grid-cols-1 gap-5  mb-5">
               {
              loading ?
+             <section className="bg-white dark:bg-gray-900">
+             <div className="container px-6 py-10 mx-auto animate-pulse">
+                <div className="flex gap-5">
+                          <p className="w-16 h-16 bg-gray-200 rounded-md dark:bg-gray-700 ring-2 ring-gray-300 dark:ring-gray-600"></p>
+              <h1 className="w-52 h-3 mt-2 bg-gray-200  rounded-lg dark:bg-gray-700"></h1>
+                        
+         
+                </div>
+        <p className="w-52 h-2 ml-24 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700"></p>
+                 <div className=" mt-5 gap-8   flex justify-center xl:gap-12 sm:grid-cols-2 lg:grid-cols-3">
+                     <div className="w-full ">
+                         <div className="w-full h-64 bg-gray-300 rounded-lg md:h-72 dark:bg-gray-600"></div>
+                         
+                      
+                     </div>
+         
               
-                <div className="flex justify-center items-center mt-24">
-                    <CircularProgress isIndeterminate color='blue.400' />
-            
-          </div>
+         
+             
+                 </div>
+             </div>
+         </section>
 
                 
               :
 
               posts.map((post) => (
-           <div key={post.ID} className="flex dark:glass dark:bg-transparent bg-slate-100  justify-between flex-col shadow-xl  border dark:border-slate-800  h-auto rounded-md "> 
+           <div key={post.ID} className="flex dark:glass  dark:bg-transparent bg-slate-100  justify-between flex-col shadow-xl  border dark:border-slate-800  h-auto rounded-md "> 
           <div>
               <div className="flex p-4 gap-2 ">
                 {
@@ -211,6 +231,7 @@ const AllPost = () => {
    </div>
        ))}
    </div>
+   </aside>
        </div>
   )
 }

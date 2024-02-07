@@ -39,9 +39,7 @@ const RegisterPage =  () => {
  <section className="bg-slate-900">
 
     <div className="flex justify-center min-h-screen">  
-    
-        <div className="hidden bg-cover lg:block lg:w-2/5 bg-[url(https://cdn.elobservador.com.uy/032021/1614904377786/_LCM2004.JPG)]" >
-        </div>
+
  <Link to='/' className="absolute top-10 left-10 bg-blue-700 text-white font-semibold px-3 py-1 rounded-md text-xl hover:bg-blue-600">
  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 rtl:-scale-x-100" viewBox="0 0 20 20" fill="currentColor">
                             <path fillRule="evenodd"
@@ -59,34 +57,22 @@ const RegisterPage =  () => {
                     Ingresa tus datos para crear una cuenta gratis.
                 </p>
 
-                <div className="mt-6">
-                    <h1 className="text-white dark:text-gray-300">Selecciona el tipo</h1>
-
-                    <div className="mt-3 md:flex md:items-center md:-mx-2">
-                        <button className="flex justify-center w-full px-6 py-3 text-white bg-blue-500 rounded-lg md:w-auto md:mx-2 focus:outline-none">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
-
-                            <span className="mx-2">
-                                becario
-                            </span>
-                        </button>
-
-                        <button className="flex justify-center w-full px-6 py-3 mt-4 text-blue-500 border border-blue-500 rounded-lg md:mt-0 md:w-auto md:mx-2 dark:border-blue-400 dark:text-blue-400 focus:outline-none">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                            </svg>
-
-                            <span className="mx-2">
-                                chambeador
-                            </span>
-                        </button>
-                    </div>
-                </div>    {
+              
+                   {
                         message && (
-<div>
-    <p>Hola</p>
+<div className="flex w-full max-w-sm overflow-hidden bg-white animate-bounce rounded-lg shadow-md dark:bg-gray-800">
+    <div className="flex items-center justify-center w-12 bg-emerald-500">
+        <svg className="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333Z" />
+        </svg>
+    </div>
+
+    <div className="px-4 py-2 -mx-3">
+        <div className="mx-3">
+            <span className="font-semibold text-emerald-500 dark:text-emerald-400">Exito!</span>
+            <p className="text-sm text-gray-600 dark:text-gray-200">Tu cuenta fue registrada!</p>
+        </div>
+    </div>
 </div>
 
 

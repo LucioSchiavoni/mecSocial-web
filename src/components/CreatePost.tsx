@@ -34,11 +34,11 @@ try {
 
   return (
     <div className="w-full   py-7 space-y-2  rounded-md ">     
-        <form onSubmit={handleSubmit} className="flex space-y-2 flex-col border rounded-md border-double dark:border-slate-600 p-2">
+        <form onSubmit={handleSubmit} className="flex space-y-2 flex-col border rounded-md border-double dark:border-slate-700 p-2">
 <div className=" ">
   <div className="flex gap-1">
       <img src={userData.image} alt="" className="w-12 h-12 rounded-full object-cover aspect-square" />
-         <textarea className="w-full  h-24 px-6 py-4 rounded-md  resize-none text-white dark:bg-slate-700 bg-slate-100 border  text-xl focus:outline-double focus:border  focus:border-double focus:border-sky-700  " placeholder="Que estas pensando..">
+         <textarea className="w-full  h-24 px-6 py-4 rounded-md  resize-none text-white dark:bg-slate-700 bg-slate-100   text-xl focus:outline-double focus:border  focus:border-double focus:border-sky-700  " placeholder="Que estas pensando..">
             </textarea>
   </div>
 
@@ -50,7 +50,7 @@ try {
           <input type="file" ref={imageRef} className="" />
           </div>
       
-          <button className="bg-blue-800 w-64  rounded-md hover:bg-blue-700 text-white px-3 py-1 shadow-xl">Publicar</button>
+          <button className="bg-blue-900 w-64  rounded-md font-semibold hover:bg-blue-800 text-white px-3 py-1 shadow-xl">Publicar</button>
             </div>
         
 </div>    

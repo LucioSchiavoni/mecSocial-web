@@ -4,6 +4,7 @@ import { useAuthStore } from "../store/auth"
 import { useRef } from "react"
 import { updateUser } from "../interface/updateUser"
 import { useState } from "react"
+import { FaBackspace } from "react-icons/fa";
 
 const ConfigPage = () => {
 
@@ -65,7 +66,7 @@ const ConfigPage = () => {
   return (
     <Layout>
         <div className="flex justify-center items-center">
-            <Link to='/auth' className="absolute left-10 bg-white text-xl px-3 rounded-md py-1 text-sky-800 hover:bg-gray-200">Atras</Link>
+            <Link to='/auth' className="absolute top-10 text-3xl left-10 bg-white  px-3 rounded-md py-1 text-sky-800 hover:bg-gray-200"><FaBackspace /></Link>
             <div className="mt-24">
              <form onSubmit={handleSubmit} className="text-black flex flex-col gap-3 shadow-xl bg-white p-4 rounded-md">
 
@@ -76,17 +77,17 @@ const ConfigPage = () => {
                   </div>
                 )
               }
-
+               <p className="text-center text-3xl text-blue-500 font-semibold  ">Editar perfil</p>
               <label htmlFor="" className="text-black font-semibold text-xl text-center">Nombres</label>
-                <input type="text" className="px-3 py-1 rounded-md " />
+                <input type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring " />
                 <label htmlFor="" className="text-black font-semibold text-xl text-center">Contraseña</label>
-                <input type="password" className="px-3 py-1 rounded-md"/>
+                <input type="password" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
                 <label htmlFor="" className="text-black font-semibold text-xl text-center">Descripcion</label>
-                <input type="text" className="px-3 py-1 rounded-md bg-gray-300"/>
+                <input type="text" className="block w-full px-4 py-2 mt-2 text-gray-700  border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring bg-gray-300"/>
                 <label htmlFor="" className="text-black font-semibold text-xl text-center">Foto de perfil</label>
-                <input type="file" ref={imageRef} className="px-3 py-1 rounded-md" />
+                <input type="file" ref={imageRef} className="" />
                 <label htmlFor="" className="text-black font-semibold text-xl text-center">Fondo de pantalla</label>
-                <input type="file" ref={imageBgRef} className="px-3 py-1 rounded-md "/>
+                <input type="file" ref={imageBgRef} className=" "/>
 
               <button type="submit" className="bg-blue-800 py-1 mt-5 text-xl font-semibold rounded-md text-white hover:bg-blue-600">Guardar</button>
              </form>
