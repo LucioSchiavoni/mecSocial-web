@@ -20,7 +20,7 @@ const ProfileSm = () => {
  
 
     <div className="flex flex-col items-center mt-6 -mx-2">
-        <img src={profile.image_bg} alt="bg" className="absolute w-40 object-cover h-32 top-16 rounded-sm border   " />
+        {/* <img src={profile.image_bg} alt="bg" className="absolute w-40 object-cover h-32 top-16 rounded-sm border   " /> */}
         <img className="object-cover w-24 h-24 mx-2 rounded-full z-20 shadow-xl ring-blue-500 ring-2" src={profile.image} alt="avatar"/>
         <h4 className="mx-2font-medium text-gray-800 dark:text-gray-200 mt-10">{profile.username}</h4>
         <p className="mx-2 mt-1 text-sm font-medium text-gray-600 dark:text-gray-400">{profile.email}</p>

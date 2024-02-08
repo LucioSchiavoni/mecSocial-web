@@ -12,6 +12,7 @@ type State = {
     token: string;
     profile: any;
     isAuth: boolean
+    
 }
 
 type Actions = {
@@ -46,7 +47,11 @@ export const useAuthStore = create(persist<State & Actions>(
         register: async (user: createUser) => {
             try {
                 const res = await registerRequest(user)
-                console.log(res)
+                
+                if(res && res.status === 409){
+                    return res.data.error;
+                }
+                return res
             } catch (error) {
                 console.log("Error del estado del registro: ", error)
             }

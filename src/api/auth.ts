@@ -44,7 +44,10 @@ export const registerRequest = async (data: createUser): Promise<any> => {
                 'Content-Type': 'multipart/form-data',
             }
         })
-        return res.data;
+        if(res.data && res.data.error){
+            return res.data.error
+        }
+        return res
     } catch (error) {
         console.log(error)
     }

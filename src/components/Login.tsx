@@ -3,6 +3,7 @@ import { useAuthStore } from "../store/auth"
 import { Link, useNavigate } from "react-router-dom"
 import img from '../assets/logo-mec.jpg'
 import { useState } from "react"
+import { Spinner } from "@chakra-ui/react"
 
 const Login = () => {
 
@@ -12,16 +13,16 @@ const Login = () => {
 
     const navigate = useNavigate()
     const [message, setMessage] = useState<Boolean>(false)
-
+    const [button, setButton] = useState<Boolean>(false)
     const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const email = (e.currentTarget.elements[0] as HTMLInputElement).value
         const password = (e.currentTarget.elements[1] as HTMLInputElement).value
         
-
+       
         try {
             const res = await loginRequest(email, password);
-
+             
             if (res.data.status === 401) {
                 setMessage(true);
                
@@ -40,6 +41,7 @@ const Login = () => {
         
             
         }
+        setButton(false)
     }
 
   return (
@@ -92,8 +94,15 @@ const Login = () => {
             </div>
 
             <div className="mt-6">
-                <button type="submit" className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
-                    Ingresar
+                <button onClick={() => setButton(true)} type="submit" className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                    {
+                        button ?
+                        <Spinner/>
+                        :
+                        <span>Ingresar</span>
+                    }
+                    
+                    
                 </button>
 
                 <p className="mt-4 text-center text-gray-600 dark:text-gray-400"> o también </p>
