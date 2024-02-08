@@ -25,6 +25,9 @@ const RegisterPage =  () => {
     const imageFile = imageRef.current?.files?.[0];
     const imageBgFile = imageBgRef.current?.files?.[0];
 
+    setTimeout(() => {
+        setButton(false)
+    }, 3000)
     try {
          const res = await register({username, email, password, description,  image: imageFile || null , image_Bg: imageBgFile || null})
             setButton(false)
@@ -35,7 +38,7 @@ const RegisterPage =  () => {
                 }, 3000)
                 return
             }
-          
+            
             setMessage(true)
             setTimeout(() => {
                 setMessage(false)
