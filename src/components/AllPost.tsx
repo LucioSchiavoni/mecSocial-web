@@ -154,7 +154,7 @@ const AllPost = () => {
            
           </div>
 
-               <div className=" rounded-md p-2 w-full border-t m-auto">
+               <div className="dark:border-slate-800  p-2 w-full border-t m-auto">
                    <div className=" ml-2 w-full mt-5">
                     <form onSubmit={(e) => handleSubmitComments(e, post.User.ID, post.ID)} className="flex w-full gap-4">
                     <img src={profile.image} alt="perfil" className="w-12 rounded-full h-12 object-cover" />
