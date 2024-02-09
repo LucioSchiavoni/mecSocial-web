@@ -38,7 +38,7 @@ try {
 <div className=" ">
   <div className="flex gap-1">
       <img src={userData.image} alt="" className="w-12 h-12 rounded-full object-cover aspect-square" />
-         <textarea className="w-full border h-24 px-6 py-4 rounded-md  resize-none text-black dark:text-white dark:bg-slate-700 bg-slate-100   text-xl focus:outline-double focus:border  focus:border-double focus:border-sky-700  " placeholder="Que estas pensando..">
+         <textarea className="w-full border dark:border-slate-800 h-24 px-6 py-4 rounded-md  resize-none text-black dark:text-white dark:bg-slate-700 bg-slate-100   text-xl focus:outline-double focus:border  focus:border-double focus:border-sky-700  " placeholder="Que estas pensando..">
             </textarea>
   </div>
 
@@ -49,7 +49,7 @@ try {
         
         <CiImageOn  /> 
         </div>
-        <input id="dropzone-file" type="file" className="hidden" />
+        <input id="dropzone-file" type="file" ref={imageRef} className="hidden" />
     </label>
 </div> 
 
@@ -67,14 +67,3 @@ try {
 
 export default CreatePost
 
-{/* <svg className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-</svg> */}
-
-
-// <div className="flex gap-5 ">
-// <span className="text-3xl text-sky-400">
-//    <CiImageOn  /> 
-// </span>
-// <input type="file" ref={imageRef} className="" />
-// </div>
