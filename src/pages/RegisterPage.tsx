@@ -13,6 +13,7 @@ const RegisterPage =  () => {
   const [message, setMessage] = useState<boolean>(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [button, setButton] = useState<boolean>(false)
+  const [errorPassowrd, setErrorPassword] = useState<boolean>(false)
 
 
 
@@ -21,13 +22,21 @@ const RegisterPage =  () => {
     const username = (e.currentTarget.elements[0] as HTMLInputElement).value;
     const email = (e.currentTarget.elements[1] as HTMLInputElement).value;
     const password = (e.currentTarget.elements[2] as HTMLInputElement).value;
-    const description = (e.currentTarget.elements[3] as HTMLInputElement).value;
+    const Confirmpassword = (e.currentTarget.elements[3] as HTMLInputElement).value;
+    const description = (e.currentTarget.elements[4] as HTMLInputElement).value;
     const imageFile = imageRef.current?.files?.[0];
     const imageBgFile = imageBgRef.current?.files?.[0];
 
-    setTimeout(() => {
-        setButton(false)
+    if (password !== Confirmpassword){
+        setErrorPassword(true)
+            setTimeout(() => {
+        setErrorPassword(false)
     }, 3000)
+        return;
+    }
+
+
+
     try {
          const res = await register({username, email, password, description,  image: imageFile || null , image_Bg: imageBgFile || null})
             setButton(false)
@@ -50,9 +59,6 @@ const RegisterPage =  () => {
      
     }
  
-
-
-
   return (
 
  <>
@@ -69,11 +75,11 @@ const RegisterPage =  () => {
  </Link>
         <div className="flex items-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5">
             <div className="w-full">
-                <h1 className="text-2xl font-semibold tracking-wider text-white capitalize dark:text-white">
+                <h1 className="text-5xl font-bold tracking-wider text-white capitalize dark:text-white">
                     Registrate.
                 </h1>
 
-                <p className="mt-4 text-white ">
+                <p className="mt-4 text-white text-xl font-semibold">
                     Ingresa tus datos para crear una cuenta gratis.
                 </p>
 
@@ -100,6 +106,29 @@ const RegisterPage =  () => {
                         )
                     }
 
+{
+                        errorPassowrd && (
+                            <div className="flex w-full max-w-sm absolute top-10 ml-28 overflow-hidden bg-white  rounded-lg shadow-md dark:bg-gray-800">
+                            {/* <div className="flex items-center justify-center w-12 bg-red-700">
+                                <svg className="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333Z" />
+                                </svg>
+                            </div> */}
+                        
+                            <div className="px-4 py-2 -mx-3">
+                                <div className="mx-3">
+                                    <span className="font-semibold text-red-800 text-xl dark:text-red-800">Error</span>
+                                    <p className="text-xl  text-red-700 font-semibold dark:text-gray-200">Las contraseñas no coinciden</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        )
+                    }
+
+
                     {
                         errorMessage && (
                             <div className="flex w-full max-w-sm absolute top-10 ml-28 overflow-hidden bg-white  rounded-lg shadow-md dark:bg-gray-800">
@@ -111,7 +140,7 @@ const RegisterPage =  () => {
                         
                             <div className="px-4 py-2 -mx-3">
                                 <div className="mx-3">
-                                    <span className="font-semibold text-red-800 dark:text-emerald-400">Error</span>
+                                    <span className="font-semibold text-red-800 dark:text-red-800">Error</span>
                                     <p className="text-sm text-gray-600 dark:text-gray-200">Ya existe una cuenta con este email</p>
                                 </div>
                             </div>
@@ -122,7 +151,6 @@ const RegisterPage =  () => {
                
 
                 <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
-
                 
                     <div>
                         <label className="block mb-2 text-sm  text-white dark:text-gray-200">Nombres</label>
@@ -137,6 +165,11 @@ const RegisterPage =  () => {
 
                     <div>
                         <label className="block mb-2 text-sm  text-white dark:text-gray-200">Contraseña</label>
+                        <input type="password" placeholder="Ingresa tu contraseña" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                    </div>
+
+                    <div>
+                        <label className="block mb-2 text-sm  text-white dark:text-gray-200">Confirmar contraseña</label>
                         <input type="password" placeholder="Ingresa tu contraseña" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                     </div>
 
@@ -156,14 +189,15 @@ const RegisterPage =  () => {
 
     <input type="file" required ref={imageBgRef} className="block w-full px-3 py-2 mt-2 text-sm text-gray-600 bg-white border border-gray-200 rounded-lg file:bg-gray-200 file:text-gray-700 file:text-sm file:px-4 file:py-1 file:border-none file:rounded-full dark:file:bg-gray-800 dark:file:text-gray-200 dark:text-gray-300 placeholder-gray-400/70 dark:placeholder-gray-500 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:focus:border-blue-300" />
 </div>
+
                     <button onClick={() => setButton(true)} type="submit"
-                        className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transhtmlForm bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                        className="flex items-center text-center justify-between w-full m-auto mt-7  px-6 py-3.5 text-sm tracking-wide text-white capitalize transition-colors duration-300 transhtmlForm bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                        {
 
                         button ? 
                         <Spinner />
                         :
-                        <span> Guardar </span>
+                        <span className="text-center"> Guardar </span>
                        }
                         
 

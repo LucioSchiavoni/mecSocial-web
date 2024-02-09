@@ -154,11 +154,11 @@ const AllPost = () => {
            
           </div>
 
-               <div className=" rounded-md p-2 w-full m-auto">
-                   <div className="  w-full  gap-2 mt-5">
-                    <form onSubmit={(e) => handleSubmitComments(e, post.User.ID, post.ID)} className="flex  w-full gap-2">
-                    <img src={profile.image} alt="perfil" className="w-12 rounded-full h-12" />
-                            <input type="text" className="px-3 rounded-md focus:outline-none focus:border-sky-900 focus:border focus:ring-2 mb-2 py-3 w-10/12 bg-slate-700 text-white" placeholder="Escribe un comentario.." />
+               <div className=" rounded-md p-2 w-full border-t m-auto">
+                   <div className=" ml-2 w-full mt-5">
+                    <form onSubmit={(e) => handleSubmitComments(e, post.User.ID, post.ID)} className="flex w-full gap-4">
+                    <img src={profile.image} alt="perfil" className="w-12 rounded-full h-12 object-cover" />
+                            <input type="text" className="px-3 rounded-md focus:outline-none focus:border-sky-900 focus:border focus:ring-2 mb-2 py-4 w-10/12  bg-slate-700 text-white" placeholder="Escribe un comentario.." />
                           <button type="submit" className="bg-blue-900 hover:bg-blue-700 rounded-md text-white text-center text-3xl font-bold px-3 py-1  w-auto h-[39px]  mt-2"><IoSend /></button>
                           </form>
                            </div>
@@ -166,7 +166,7 @@ const AllPost = () => {
 
               
                  {post.Comments.map((comment) => (
-                <div key={comment.ID} className="flex border-t  border-gray-300 dark:border-gray-800 dark:bg-slate-900  rounded-md  text-black bg-white  white flex-col    dark:text-white">
+                <div key={comment.ID} className="flex border-b   border-gray-300 dark:border-gray-800 dark:bg-black text-black bg-white  white flex-col    dark:text-white">
                         <div className=" p-2 border-gray-800">
                             <div className=" flex items-center p-1 gap-2 ">
                                <img src={comment.User.Image} alt="img-user"  className="rounded-full  w-10 h-10 "/>
