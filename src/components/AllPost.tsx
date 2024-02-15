@@ -98,27 +98,19 @@ const AllPost = () => {
          
                 </div>
         <p className="w-52 h-2 ml-24 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700"></p>
-                 <div className=" mt-5 gap-8   flex justify-center xl:gap-12 sm:grid-cols-2 lg:grid-cols-3">
-                     <div className="w-full ">
-                         <div className="w-full h-64 bg-gray-300 rounded-lg md:h-72 dark:bg-gray-600"></div>
-                         
-                      
-                     </div>
-         
-              
-         
-             
-                 </div>
-             </div>
-         </section>
-
-             
-              :
+                <div className=" mt-5 gap-8   flex justify-center xl:gap-12 sm:grid-cols-2 lg:grid-cols-3">
+                    <div className="w-full ">
+                        <div className="w-full h-64 bg-gray-300 rounded-lg md:h-72 dark:bg-gray-600"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+            :
                 
-              posts.map((post) => (
-           <div key={post.ID} className="flex dark:glass mb-10  dark:bg-transparent bg-slate-100  justify-between flex-col shadow-xl  border dark:border-slate-800  h-auto rounded-md "> 
-          <div>
-              <div className="flex p-4 gap-2 ">
+            posts.map((post) => (
+        <div key={post.ID} className="flex dark:glass mb-10  dark:bg-transparent bg-slate-100  justify-between flex-col shadow-xl  border dark:border-slate-800  h-auto rounded-md "> 
+        <div>
+            <div className="flex p-4 gap-2 ">
                 {
                     post.User.Image ?  
                 (

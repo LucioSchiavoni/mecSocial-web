@@ -7,7 +7,7 @@ import { FaBackspace } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
 import { useAuthStore } from "../store/auth"
 import { MdDeleteOutline } from "react-icons/md";
-
+import { Spinner } from "@chakra-ui/react"
 const ProfilePage = () => {
 
   type UserProfile =  {
@@ -36,19 +36,13 @@ const ProfilePage = () => {
   const userId = profile.id
   const [user, setUser] = useState<UserProfile>()
   const [post, setPost] = useState<UserPost[]>()
-
+  const [loading, setLoading] = useState<Boolean>(true)
 
     const { ID } = useParams() || {}; 
 
-
-
-
   const getUser = async () => {
-
-   
     try {
-      
-       const res = await clienteAxios.get<UserProfile>(`/user/${ID}`)
+      const res = await clienteAxios.get<UserProfile>(`/user/${ID}`)
     setUser(res.data)
     } catch (error) {
       console.log("Error del fetch del perfil by id: ", error)
@@ -57,9 +51,9 @@ const ProfilePage = () => {
   }
 
   const getPostByUser = async () => {
-
     try {
       const res = await clienteAxios.get<UserPost[]>(`/post/${ID}`)
+      setLoading(false)
       setPost(res.data)
     } catch (error) {
       console.log(error)
@@ -91,7 +85,25 @@ const ProfilePage = () => {
       <div className="absolute  top-6 left-64">
          <DarkMode/>
       </div>
+     {
+      loading ?
+      (
+        <>
+      <div className="flex flex-col justify-center items-center w-4/12 m-auto">
+        <aside className="bg-gray-200 w-full h-12 border"></aside>
+        <div className="bg-gray-400 h-96 w-full border">
+             <span className="rounded-full h-52 w-52 absolute top-80 ml-4 bg-gray-100"></span>
+        </div>
+        <div className="mt-64 ">
+          <Spinner/>
+        </div>
+      
+      </div>
      
+       
+     
+           
+    </> ) :
           <div className="flex flex-col justify-center items-center w-4/12 m-auto" >
             <div className="flex gap-5 w-full px-4 text-3xl font-semibold p-2 ">
                 <Link to='/auth' className="text-4xl text-blue-800 hover:text-blue-500"><FaBackspace/></Link>
@@ -163,6 +175,7 @@ const ProfilePage = () => {
 
 
           </div>
+}
     </Layout>
 
   )
