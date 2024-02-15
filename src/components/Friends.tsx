@@ -12,6 +12,7 @@ const Friends = () => {
     Username: string;
     Image: string;
     Description: string;
+    Email:string;
   };
 
 
@@ -58,7 +59,7 @@ const Friends = () => {
         <Link to={`/profilePage/${item.ID}`} className="text-black dark:text-white text-xl capitalize hover:underline">{item.Username}</Link>
         
       
-          <p className="text-gray-600">{item.Description}</p>
+          <p className="text-gray-600">{item.Email}</p>
         </div>
      
         </div> 

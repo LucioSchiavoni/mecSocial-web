@@ -4,6 +4,9 @@ import clienteAxios from "../libs/axios"
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { FaBackspace } from "react-icons/fa";
+import { MdOutlineEmail } from "react-icons/md";
+import { useAuthStore } from "../store/auth"
+import { MdDeleteOutline } from "react-icons/md";
 
 const ProfilePage = () => {
 
@@ -19,22 +22,22 @@ const ProfilePage = () => {
   
   type UserPost = {
     ID: string;
+    Description: string;
+    ImagePost: string;
+    UserID: string;
     User: {
       Image: string;
       ImageBg:string;
       Username: string
     }
-    Post: {
-      ID: string;
-      Description:string;
-      ImagePost:string;
-      CreatedAt:string;
-    }
-  
   }
 
+  const profile = useAuthStore((state) => state.profile)
+  const userId = profile.id
   const [user, setUser] = useState<UserProfile>()
   const [post, setPost] = useState<UserPost[]>()
+
+
     const { ID } = useParams() || {}; 
 
 
@@ -56,8 +59,18 @@ const ProfilePage = () => {
   const getPostByUser = async () => {
 
     try {
-      const res = await clienteAxios.get<UserPost[]>(`/notificationByUser/${ID}`)
+      const res = await clienteAxios.get<UserPost[]>(`/post/${ID}`)
       setPost(res.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const deletePost = async (ID: string) => {
+    try {
+      const res = await clienteAxios.delete(`/post/${ID}`)
+      console.log(res)
+      window.location.reload()
     } catch (error) {
       console.log(error)
     }
@@ -67,6 +80,8 @@ const ProfilePage = () => {
   useEffect(() => {
       getUser();
       getPostByUser();
+      console.log(ID)
+      
   }, []);
 
 
@@ -91,48 +106,61 @@ const ProfilePage = () => {
                   <img src={user.Image} alt="perfi" className="w-52 h-52 rounded-full absolute ml-4  top-80" />
                   
                      <p className="text-3xl font-semibold abolsute mt-24 px-10 py-2 capitalize">{user.Username}</p>
-                      <p className=" dark:text-gray-300 text-xl px-10 p-6">{user.Description}</p>
-              
+                     <div className="flex justify-between gap-5 px-12 py-2  dark:text-gray-300 ">
+                     <p className="italic">{user.Description}</p>
                      
+                     <article className="flex gap-2 text-xl mb-2">
+                     <span className="text-2xl mt-1"><MdOutlineEmail />
+                      </span>
+                       {user.Email}
+                       </article>
+                     </div>
+                      
                 </div>
          
               :
               null
             }
-            {
-              post ? 
-              post.map((post) => (
-                    <div key={post.Post.ID} className="space-y-3 mt-5 mb-10">
-                      <aside className="flex gap-5">
-                        <img src={post.User.Image} alt="" className="w-10 h-10 rounded-full" />
-                        <p className="items-center font-semibold mt-2 text-xl">{post.User?.Username}</p>
-                      </aside>
+          {
+  post ?
+  post.map((post) => (
+      <div key={post.ID} className="mb-2 mt-1 border dark:border-slate-900 p-4 rounded-md w-full">
+        <aside className="flex gap-5 justify-between"> 
+          <div className="flex gap-3">
+            <img src={user?.Image} alt="" className="w-10 h-10 rounded-full" />
+            <p className="items-center font-semibold capitalize mt-2 text-xl">{user?.Username}</p>
+           
+          </div>
+          {
+            userId == ID ?  
+            <button onClick={() => deletePost(post.ID)} className="text-3xl text-red-700 hover:text-red-800"><MdDeleteOutline /></button>
+          
+            :
+            null
+          } 
+        </aside>
+        <article>
+          {
+             post.Description && (
+              <>
+                <p className="text-xl p-4 px-12">{post.Description}</p>
+                
+                { post.ImagePost ? <img src={post.ImagePost} alt="image-post" className="h-auto m-auto mt-3 rounded-md w-96 object-cover" /> : null }
+              </>
+            ) 
+         
+          }
+      
+        </article>
+      </div> 
+    
+  ))
+  :
+<div className=" text-2xl text-center dark:text-gray-300 mt-24 3xl">
+      <p>Sin publicaciones por el momento.</p>
+    </div>
+}
 
-                      <article>
-              
-
-                {
-                  post.Post.ImagePost ? (
-                  <>
-                 
-
-                    <img src={post?.Post?.ImagePost} alt="image-post" className="h-auto rounded-md w-96 object-cover" />
-                  
-                  </> 
-                   )
-                    :
-                     <p className=" mr-28 text-2xl ">{post?.Post?.Description}</p>
-                    
-                }
-              
-                </article>
-              </div>
-              ))
-              :
-              <div className="text-white text-center font-semibold mt-24 3xl">
-                Sin post
-              </div>
-            }
 
           </div>
     </Layout>

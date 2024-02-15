@@ -83,7 +83,7 @@ const ConfigPage = () => {
                 <label htmlFor="" className="text-black font-semibold text-xl text-center">Contraseña</label>
                 <input type="password" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
                 <label htmlFor="" className="text-black font-semibold text-xl text-center">Descripcion</label>
-                <input type="text" className="block w-full px-4 py-2 mt-2 text-gray-700  border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring bg-gray-300"/>
+                <input type="text" className="block w-full px-4 py-2 mt-2 text-gray-700  border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring "/>
                 <label htmlFor="" className="text-black font-semibold text-xl text-center">Foto de perfil</label>
                 <input type="file" ref={imageRef} className="" />
                 <label htmlFor="" className="text-black font-semibold text-xl text-center">Fondo de pantalla</label>
