@@ -43,7 +43,7 @@ const Friends = () => {
     
       </div>
     
-      <p className="text-2xl flex items-center gap-2 leading-3 py-2 "><FaUserFriends />Usuarios en Mec </p>
+      <p className="text-2xl flex items-center gap-2 leading-3 py-2 "><FaUserFriends />Contactos </p>
       {
         user ?
     

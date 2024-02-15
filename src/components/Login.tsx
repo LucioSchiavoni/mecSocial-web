@@ -1,7 +1,7 @@
 import { loginData, loginRequest } from "../api/auth"
 import { useAuthStore } from "../store/auth"
 import { Link, useNavigate } from "react-router-dom"
-import img from '../assets/logo-mec.jpg'
+import img from '../assets/baked.png'
 import { useState } from "react"
 import { Spinner } from "@chakra-ui/react"
 

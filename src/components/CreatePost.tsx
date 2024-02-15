@@ -19,7 +19,7 @@ const CreatePost = () => {
 
     const description = (e.currentTarget.elements[0] as HTMLTextAreaElement).value;
     const imageFile = (imageRef.current?.files)?.[0];
-   
+
 try {
   const response = await createPost({ description, imagePost: imageFile || null, userID: idStr }) as any;
   console.log(response)
