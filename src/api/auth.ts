@@ -1,3 +1,4 @@
+import { deleteLike } from "@/interface/deleteLike";
 import { createComments } from "../interface/comments";
 import { createLike } from "../interface/likes";
 import { createPost } from "../interface/post";
@@ -118,6 +119,20 @@ export const createLikeRequest = async (data: createLike) => {
         return res.data
     } catch (error) {
         console.log("error en el fetch del like: ", error)
+    }
+}
+
+export const deleteLikeRequest = async (data: deleteLike) => {
+
+    try {
+        const res = await clienteAxios.delete(`/like/${data.creatorID}`,{
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        return res.data
+    } catch (error) {
+        console.log("Error en el fetch del dislike: ",error)
     }
 }
 
