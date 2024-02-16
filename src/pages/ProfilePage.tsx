@@ -74,7 +74,7 @@ const ProfilePage = () => {
   useEffect(() => {
       getUser();
       getPostByUser();
-      console.log(ID)
+     
       
   }, []);
 
@@ -89,9 +89,9 @@ const ProfilePage = () => {
       loading ?
       (
         <>
-      <div className="flex flex-col justify-center items-center w-4/12 m-auto">
+      <div className="flex flex-col justify-center items-center animate-pulse w-4/12 m-auto">
         <aside className="bg-gray-200 w-full h-12 border"></aside>
-        <div className="bg-gray-400 h-96 w-full border">
+        <div className="bg-gray-400 animate-pulse h-96 w-full border">
              <span className="rounded-full h-52 w-52 absolute top-80 ml-4 bg-gray-100"></span>
         </div>
         <div className="mt-64 ">
@@ -114,8 +114,8 @@ const ProfilePage = () => {
               user ? 
              
                 <div key={user.ID} className=" w-full border rounded-md dark:border-slate-800 ">
-                       <img src={user.ImageBg} alt="perfil" className="w-full h-96 " />  
-                  <img src={user.Image} alt="perfi" className="w-52 h-52 rounded-full absolute ml-4  top-80" />
+                       <img src={user.ImageBg} alt="perfil" className="w-full h-96 object-cover " />  
+                  <img src={user.Image} alt="perfi" className="w-52 h-52 rounded-full absolute ml-4 object-cover  top-80" />
                   
                      <p className="text-3xl font-semibold abolsute mt-24 px-10 py-2 capitalize">{user.Username}</p>
                      <div className="flex justify-between gap-5 px-12 py-2  dark:text-gray-300 ">

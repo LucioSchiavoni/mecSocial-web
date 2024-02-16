@@ -7,7 +7,7 @@ import { ProtectedRoute } from './components/ProtectedRoute'
 import { useAuthStore } from './store/auth'
 import ForgetPassword from './pages/ForgetPassword'
 import ProfilePage from './pages/ProfilePage'
-import ConfigPage from './pages/ConfigPage'
+
 import { ChakraProvider } from '@chakra-ui/react'
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
 <Route element={<ProtectedRoute isAllowed={isAuth} />} >
   <Route path='/auth' element={<HomeAuth/>}/>
  <Route path='/profilePage/:ID' element={<ProfilePage/>}/>
- <Route path='/config' element={<ConfigPage/>}/>
+
  
 </Route>
     </Routes>
