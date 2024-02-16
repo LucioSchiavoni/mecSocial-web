@@ -34,8 +34,8 @@ try {
 
   return (
     <div className="w-full   py-7 space-y-2  rounded-md ">     
-        <form onSubmit={handleSubmit} className="flex space-y-2 flex-col border rounded-md border-double  dark:border-slate-700 p-2">
-<div className=" ">
+        <form onSubmit={handleSubmit} className="flex space-y-2 flex-col border rounded-md border-double  dark:border-slate-700 dark:bg-[#121314] p-2">
+<div className="mt-5 mr-5">
   <div className="flex gap-1">
       <img src={userData.image} alt="" className="w-12 h-12 rounded-full object-cover aspect-square" />
          <textarea className="w-full border dark:border-slate-800 h-24 px-6 py-4 rounded-md  resize-none text-black dark:text-white dark:bg-slate-700 bg-slate-100   text-xl focus:outline-double focus:border  focus:border-double focus:border-sky-700  " placeholder="Que estas pensando..">

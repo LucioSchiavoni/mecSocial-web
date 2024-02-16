@@ -73,9 +73,9 @@ const DialogDemo = () =>{
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline" className="dark:bg-slate-900 dark:border dark:border-slate-700">Editar Perfil</Button>
+        <Button variant="outline" className="dark:bg-[#121314] dark:border shadow-xl dark:border-slate-700">Editar Perfil</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] dark:bg-slate-900 dark:text-white">
+      <DialogContent className="sm:max-w-[425px] dark:bg-[#121314] dark:text-white">
         <DialogHeader>
           <DialogTitle className="dark:text-white">Editar perfil</DialogTitle>
           <DialogDescription>

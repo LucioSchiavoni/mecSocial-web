@@ -108,7 +108,7 @@ const AllPost = () => {
             :
                 
             posts.map((post) => (
-        <div key={post.ID} className="flex dark:glass mb-10  dark:bg-transparent bg-slate-100  justify-between flex-col shadow-xl  border dark:border-slate-800  h-auto rounded-md "> 
+        <div key={post.ID} className="flex dark:glass mb-10  dark:bg-[#121314] bg-slate-100  justify-between flex-col shadow-xl  border dark:border-slate-800  h-auto rounded-md "> 
         <div>
             <div className="flex p-4 gap-2 ">
                 {
@@ -122,13 +122,13 @@ const AllPost = () => {
           
             <div className="flex flex-col ">
            <Link to={`/profilePage/${post.User.ID}`} className="font-semibold py-1 text-2xl capitalize hover:underline">{post.User.Username}</Link>
-            <span className="dark:text-gray-200 text-gray-600  text-sm">{post.CreatedAt.slice(0,10)}</span>
+            <span className="dark:text-gray-500 text-gray-700  text-sm">{post.CreatedAt.slice(0,10)}</span>
             </div>
            </div>
           
            { 
            post.Description !== "" ? (
-<p className="px-20 p-7 text-2xl">{post.Description}</p>
+<p className="px-20 p-7 text-3xl font-semibold">{post.Description}</p>
             
            )
            :
