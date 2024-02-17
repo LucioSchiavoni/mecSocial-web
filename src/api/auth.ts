@@ -122,20 +122,6 @@ export const createLikeRequest = async (data: createLike) => {
     }
 }
 
-export const deleteLikeRequest = async (data: deleteLike) => {
-
-    try {
-        const res = await clienteAxios.delete(`/like/${data.creatorID}`,{
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        return res.data
-    } catch (error) {
-        console.log("Error en el fetch del dislike: ",error)
-    }
-}
-
 export const updateUserRequest = async (data: updateUser): Promise<any> => {
 
     const formData = new FormData()

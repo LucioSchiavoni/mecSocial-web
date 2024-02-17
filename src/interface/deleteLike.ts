@@ -1,3 +1,4 @@
 export interface deleteLike {
-    creatorID: string;
+    id: string;
+    userID: string;
 }

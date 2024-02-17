@@ -4,10 +4,10 @@ import CreatePost from "./CreatePost";
 import { useAuthStore } from "../store/auth";
 import { IoSend } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import { createLikeRequest, deleteLikeRequest } from "@/api/auth";
+import { createLikeRequest } from "@/api/auth";
 import { Avatar, AvatarGroup } from '@chakra-ui/react'
 import { AiOutlineLike } from "react-icons/ai";
-import { AiFillLike } from "react-icons/ai";
+
 
 const AllPost = () => {
 
@@ -32,6 +32,7 @@ const AllPost = () => {
         };
         Likes: {
             ID: number;
+            UserID: number;
             User: {
                 ID: number;
                 Username: string;
@@ -83,22 +84,7 @@ const AllPost = () => {
         }
     }
 
-    const deleteLike = async (creatorID: string) => {
 
-       
-        
-        const dislike = {
-            creatorID: creatorID
-        }
-
-        try {
-            const res = await deleteLikeRequest(dislike)
-           
-            console.log(res.data)
-        } catch (error) {
-            console.log(error)
-        }
-    }
     
 
 
@@ -193,8 +179,7 @@ const AllPost = () => {
 
             
                <div className="dark:border-slate-800 p-2 w-full border-t m-auto">
-               {
-    post.Likes && (
+
         <div className="flex items-center gap-2">
          
                  <button onClick={() => {createLike(profile.id, post.ID.toString(), post.UserID),
@@ -203,67 +188,45 @@ const AllPost = () => {
                 
                 }} className="bg-blue-800 text-white px-2 py-1 gap-1 flex items-center rounded-md   hover:bg-blue-600"><span className="text-2xl"><AiOutlineLike /></span>Me gusta</button>
                 
-                  
-                <button onClick={() => {deleteLike(profile.id)
-               
-                window.location.reload()
-                }} className="flex items-center gap-1 rounded-md bg-blue-800 text-white  hover:bg-blue-600 px-2 py-1 ">
-                    
-                    <span className="text-2xl text-white"><AiFillLike /></span>No me gusta </button>
-                
-           
-           
-            
-            {
-            post.Likes.length > 0 ?
-                (
-            <div className="flex gap-1 items-center italic">
-                <p className="ml-2 mr-2">a</p>
-        <Link to={`/profilePage/${post.Likes[0].User.ID}`} className="hover:underline"> {post.Likes[0].User.Username}</Link> 
-        <AvatarGroup size='sm' max={2}>
-        <Avatar name='Ryan Florence'  src={post.Likes[0].User.Image} />
-        </AvatarGroup>
-            </div>   
-                )
-           :
-           null
-            } {
-                post.Likes.length > 1 ? 
+     {
+                post.Likes.length > 1 ?
                 (
                     <div className="flex gap-1 italic items-center">
-                        <p className="ml-2">a</p>
+                       
                         <Link to={`/profilePage/${post.Likes[0].User.ID}`} className="hover:underline"> {post.Likes[0].User.Username}</Link>, 
                         <Link to={`/profilePage/${post.Likes[1].User.ID}`} className="hover:underline"> {post.Likes[1].User.Username}</Link>
                         <AvatarGroup size='sm' max={2}>
                          <Avatar name='Ryan Florence'  src={post.Likes[0].User.Image} />
                          <Avatar name='Ryan Florence'  src={post.Likes[1].User.Image} />
                         </AvatarGroup> 
+                       {post.Likes.length} Me gusta
                     </div>
-                    
+                   
                 )
                 :
-                null
+                post.Likes.length  == 1 ? 
+                (
+                    <div className="flex gap-1 italic items-center">
+                       a
+                        <Link to={`/profilePage/${post.Likes[0].User.ID}`} className="hover:underline"> {post.Likes[0].User.Username}</Link>
+                        <AvatarGroup size='sm' max={2}>
+                         <Avatar name='Ryan Florence'  src={post.Likes[0].User.Image} />
+                       
+                        </AvatarGroup> 
+                        le gusta esto.
+                    </div>
+                )
+                :
+               null
+              
             } 
-<span className="flex italic ml-2 gap-1 items-center">
-    {post.Likes.length - 1 === 0 ? <p>le gusta esto.</p> :
-        post.Likes.length - 1 === 1 ?
-            <p> les gusta esto.</p> :
-            post.Likes.length -1 >= 1 ?
-                <p>y {post.Likes.length - 2} persona le gusta esto.</p> :
-                post.Likes.length - 1 >= 2 ?
-                <p>y {post.Likes.length - 2 } personas les gusta esto.</p>:
-                null
-    }
-</span>
+
 
             
             
-           
-             
         </div>
-    )
-            }
-                   <div className=" ml-2 w-full mt-5">
+
+                <div className=" ml-2 w-full mt-5">
                     
                     <form onSubmit={(e) => handleSubmitComments(e, post.User.ID, post.ID)} className="flex w-full gap-4 ">
                     <img src={profile.image} alt="perfil" className="w-12 rounded-full h-12 object-cover" />
