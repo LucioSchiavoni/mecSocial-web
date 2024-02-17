@@ -1,4 +1,3 @@
-import { deleteLike } from "@/interface/deleteLike";
 import { createComments } from "../interface/comments";
 import { createLike } from "../interface/likes";
 import { createPost } from "../interface/post";
@@ -6,7 +5,7 @@ import { updateUser } from "../interface/updateUser";
 import { createUser } from "../interface/user";
 import clienteAxios from "../libs/axios";
 
-
+ 
 export const loginRequest = async (email: string, password: string) => 
 {
     

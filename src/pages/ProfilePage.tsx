@@ -8,6 +8,7 @@ import { MdOutlineEmail } from "react-icons/md";
 import { useAuthStore } from "../store/auth"
 import { MdDeleteOutline } from "react-icons/md";
 import { Spinner } from "@chakra-ui/react"
+import { FcLike } from "react-icons/fc";
 const ProfilePage = () => {
 
   type UserProfile =  {
@@ -30,6 +31,21 @@ const ProfilePage = () => {
       ImageBg:string;
       Username: string
     }
+    Likes:{
+      CreatedAt: string;
+      User:{
+        Username: string;
+        Image: string;
+      }
+    }[]
+    Comments:{
+      CreatedAt: string;
+      Content: string;
+      User:{
+        Username: string;
+        Image: string;
+      }
+    }[]
   }
 
   const profile = useAuthStore((state) => state.profile)
@@ -113,19 +129,26 @@ const ProfilePage = () => {
             {
               user ? 
              
-                <div key={user.ID} className=" w-full border rounded-md dark:border-slate-800 ">
+                <div key={user.ID} className=" w-full border  rounded-md dark:border-slate-800 ">
                        <img src={user.ImageBg} alt="perfil" className="w-full h-96 object-cover " />  
                   <img src={user.Image} alt="perfi" className="w-52 h-52 rounded-full absolute ml-4 object-cover  top-80" />
                   
                      <p className="text-3xl font-semibold abolsute mt-24 px-10 py-2 capitalize">{user.Username}</p>
-                     <div className="flex justify-between gap-5 px-12 py-2  dark:text-gray-300 ">
-                     <p className="italic">{user.Description}</p>
-                     
+
+                     <div className="flex justify-between items-center  px-12 py-2  dark:text-gray-300 ">
+                      
+                     <p className="italic text-xl">{user.Description}</p>
+                             {
+                        
+                        <div> <p className="italic text-xl  ">Post creados: {post?.length}</p></div>
+                        
+                       }
                      <article className="flex gap-2 text-xl mb-2">
                      <span className="text-2xl mt-1"><MdOutlineEmail />
                       </span>
                        {user.Email}
                        </article>
+               
                      </div>
                       
                 </div>
@@ -136,9 +159,9 @@ const ProfilePage = () => {
           {
   post ?
   post.map((post) => (
-      <div key={post.ID} className="mb-2 mt-1 border dark:border-slate-900 p-4 rounded-md w-full">
+      <div key={post.ID} className="mb-2 mt-1 border dark:border-slate-900  rounded-md w-full">
         <aside className="flex gap-5 justify-between"> 
-          <div className="flex gap-3">
+          <div className="flex gap-3 p-4">
             <img src={user?.Image} alt="" className="w-10 h-10 rounded-full" />
             <p className="items-center font-semibold capitalize mt-2 text-xl">{user?.Username}</p>
            
@@ -162,8 +185,33 @@ const ProfilePage = () => {
             ) 
          
           }
-      
         </article>
+                <div className=" mt-4 w-full">
+
+        
+          {
+            post.Likes.length > 0 ? (
+          
+              <p className="px-10 flex gap-1 items-center py-2 p-4 text-xl italic font-semibold">
+                <span className="text-3xl "><FcLike /> </span>  {post.Likes.length} 
+              </p>
+      
+              )
+              :
+              null
+          }
+           {
+            post.Comments && (
+            post.Comments.map((comment) => (
+              <div key={comment.CreatedAt} className="flex gap-3 border p-4 dark:border-slate-800">
+                <img src={comment.User.Image} alt="" className="w-10 h-10 rounded-full" />
+                <p className="items-center font-semibold capitalize mt-2 text-xl">{comment.User.Username}</p>
+                 <p className="items-center   mt-2 ">{comment.Content}</p>
+              </div>
+            ))
+            )
+          }  
+          </div>
       </div> 
     
   ))
