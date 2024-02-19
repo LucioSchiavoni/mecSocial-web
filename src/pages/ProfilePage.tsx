@@ -203,7 +203,7 @@ const ProfilePage = () => {
            {
             post.Comments && (
             post.Comments.map((comment) => (
-              <div key={comment.CreatedAt} className="flex gap-3 border p-4 dark:border-slate-800">
+              <div key={comment.CreatedAt} className="flex gap-3 border p-4 dark:border-slate-800npm r">
                 <img src={comment.User.Image} alt="" className="w-10 h-10 rounded-full" />
                 <p className="items-center font-semibold capitalize mt-2 text-xl">{comment.User.Username}</p>
                  <p className="items-center   mt-2 ">{comment.Content}</p>
