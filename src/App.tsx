@@ -9,6 +9,7 @@ import ForgetPassword from './pages/ForgetPassword'
 import ProfilePage from './pages/ProfilePage'
 
 import { ChakraProvider } from '@chakra-ui/react'
+import ChatPage from './pages/ChatPage'
 
 function App() {
 
@@ -28,7 +29,7 @@ function App() {
 <Route element={<ProtectedRoute isAllowed={isAuth} />} >
   <Route path='/auth' element={<HomeAuth/>}/>
  <Route path='/profilePage/:ID' element={<ProfilePage/>}/>
-
+<Route path='/chat' element={<ChatPage/>} />
  
 </Route>
     </Routes>

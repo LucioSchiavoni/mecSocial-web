@@ -46,6 +46,9 @@ const ProfileSm = () => {
         <div className="p-4">
             <DialogDemo/>
         </div>
+        <div className="p-4">
+            <Link to='/chat' className="bg-white text-black px-3 py-1 rounded-md">Chat</Link>
+        </div>
         </nav>
 <button onClick={() => logout()} className="text-4xl hover:text-gray-700 "><SlLogout /></button>
     </div>
