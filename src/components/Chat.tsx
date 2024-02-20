@@ -1,5 +1,5 @@
 import { useAuthStore } from '@/store/auth';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState  } from 'react';
 import { Link } from 'react-router-dom';
 import { w3cwebsocket as W3CWebSocket } from 'websocket';
 import { FaBackspace } from "react-icons/fa";
@@ -23,8 +23,11 @@ const Chat: React.FC = () => {
     client.onmessage = (message) => {
      const newMessage = JSON.parse(message.data.toString());
       setMessages((prevMessages) => [...prevMessages, newMessage]);
+     
     };
   }, []);
+
+
 
     const sendMessage = () => {
     const message = {
@@ -48,6 +51,7 @@ const Chat: React.FC = () => {
   };
 
   return (
+    <>
     <div className="dark:bg-gray-800 bg-white min-h-screen">
       <div className="p-2">
         <aside className='justify-center flex items-center gap-2'>
@@ -56,13 +60,16 @@ const Chat: React.FC = () => {
         </aside>
      
 <Link to='/auth' className='absolute left-0 top-0 bg-blue-800 text-white rounded-md text-4xl w-28  hover:bg-sky-700 justify-center flex    m-1 '><FaBackspace /></Link>
+<div className='mb-24'>
+
+
         {messages.map((message, index) => (
-          <div key={index} className='flex px-4 pt-2 items-center gap-2 mt-2'>
+          <div key={index} className='flex px-4 pt-2   items-center gap-2 mt-2'>
             <img src={message.image} alt="" className='w-14 h-14 rounded-full object-cover' />
             <div className='mt-10 rounded-md  shadow-xl border dark:border-none dark:text-white dark:bg-slate-900 p-2 w-5/12'>
               <p className='font-semibold'>{message.username}</p>
               <p className='text-xl'>{message.message}</p>
-          
+
             </div>
              {
   // isTyping && ( <div className='absolute bottom-16 text-white font-semibold '>
@@ -71,8 +78,9 @@ const Chat: React.FC = () => {
 }
           </div>   
         ))}
-      </div>
-      <div className="w-full absolute  bottom-0 text-black">
+              </div>
+   
+  <div className="w-full fixed  bottom-0 bg-attachment right-1 text-black">
 
           <form onSubmit={handleSubmit} className=''>
            <input
@@ -97,7 +105,11 @@ const Chat: React.FC = () => {
      
     </form>
       </div>
+      </div>
+        
     </div>
+
+      </>
   );
 };
 
