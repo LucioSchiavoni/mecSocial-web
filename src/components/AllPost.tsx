@@ -114,8 +114,8 @@ const AllPost = () => {
 <div className="w-full min-h-screen  ">
         <CreatePost/>
  
-       <div className="grid grid-cols-1 gap-5  mb-5">
-        <div className="overscroll-contain">
+       <div className="grid grid-cols-1 gap-5 w-6/12 m-auto mb-5">
+        <div className="overscroll-contain ">
 
      
               {

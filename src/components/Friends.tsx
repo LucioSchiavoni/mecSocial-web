@@ -44,12 +44,15 @@ const Friends = () => {
       </div>
     
       <p className="text-2xl flex items-center gap-2 leading-3 py-2 "><FaUserFriends />Contactos </p>
+      <div className="overscroll-contain">
       {
         user ?
+   
+
     
      user.map((item) => (
 
-
+ 
       <div className="flex gap-5 " key={item.ID}>
         <div className="flex gap-5" >
  <img src={item.Image} alt="image-user" className="w-12 h-12 rounded-full object-cover"/>
@@ -62,15 +65,18 @@ const Friends = () => {
           <p className="text-gray-600">{item.Email}</p>
         </div>
      
-        </div> 
+        </div>
+          
      ))
+ 
         :
 <Box padding='6' boxShadow='md' bg='slate-800'>
   <SkeletonCircle size='10' />
   <SkeletonText mt='2' noOfLines={2} spacing='4' skeletonHeight='2' />
 </Box>
       }
-    </div>
+    </div>  
+     </div>
   )
 }
 

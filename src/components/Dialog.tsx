@@ -40,6 +40,7 @@ const DialogDemo = () =>{
       if (username.trim() !== '') {
           updateData.username = username;
       }
+      
   
       if (password.trim() !== '') {
           updateData.password = password;
@@ -125,7 +126,7 @@ const DialogDemo = () =>{
               className="col-span-3 px-3 py-4 border rounded-md shadow-xl ring-1 ring-blue-900"
             />
           </div>
-               <div className="flex justify-center  gap-2">
+               {/* <div className="flex justify-center  gap-2">
             <Label htmlFor="image" className="mt-2 text-center  dark:text-white w-5/12">
               Foto de perfil
             </Label>
@@ -144,7 +145,7 @@ const DialogDemo = () =>{
            type="file"
            className="w-full"
             />
-          </div>
+          </div> */}
         </div>
         <DialogFooter>
           <Button type="submit">Guardar cambios</Button>

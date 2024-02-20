@@ -60,7 +60,7 @@ const Chat: React.FC = () => {
         </aside>
      
 <Link to='/auth' className='absolute left-0 top-0 bg-blue-800 text-white rounded-md text-4xl w-28  hover:bg-sky-700 justify-center flex    m-1 '><FaBackspace /></Link>
-<div className='mb-24'>
+<div className='mb-1 overscroll-contain'>
 
 
         {messages.map((message, index) => (
