@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dialog"
 
 import { Label } from "@/components/ui/label"
-
+import { MdModeEditOutline } from "react-icons/md";
 const DialogDemo = () =>{
 
       const update = useAuthStore((state) => state.updateUser)
@@ -73,11 +73,11 @@ const DialogDemo = () =>{
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline" className="dark:bg-[#121314] dark:border shadow-xl dark:border-slate-700">Editar Perfil</Button>
+        <Button variant="outline" className="dark:bg-[#121314] dark:border shadow-xl dark:border-slate-700"><span className="text-xl items-center"><MdModeEditOutline /></span>Editar Perfil</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] dark:bg-[#121314] dark:text-white">
         <DialogHeader>
-          <DialogTitle className="dark:text-white">Editar perfil</DialogTitle>
+          <DialogTitle className="">Editar perfil</DialogTitle>
           <DialogDescription>
             {
                 message && (

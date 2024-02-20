@@ -3,9 +3,9 @@ import { useAuthStore } from "../store/auth"
 import { SlLogout } from "react-icons/sl";
 import { Link } from "react-router-dom";
 import DialogDemo from "./Dialog";
-
-
-
+import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
+import { CgProfile } from "react-icons/cg";
+import { IoGameControllerOutline } from "react-icons/io5";
 
 const ProfileSm = () => {
 
@@ -15,7 +15,7 @@ const ProfileSm = () => {
   return (
 
     <aside className="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-[#121314] dark:border-gray-700">
-<div className="mx-auto">
+<div className="mx-auto ">
            <DarkMode/> 
 </div>
 
@@ -32,23 +32,27 @@ const ProfileSm = () => {
     
         <nav>
                 
-            <a className="flex items-center px-4 py-2  text-gray-700  hover:bg-gray-200 dark:hover:bg-slate-800 border shadow-xl rounded-lg dark:dark:bg-[#121314]
-            dark:text-gray-200" href="#">
+            <a className="flex items-center px-4 py-2 hover:scale-125 transition duration-300 delay-150  text-gray-700  hover:bg-gray-200 dark:hover:bg-slate-800 border dark:border-slate-800 shadow-xl rounded-lg dark:dark:bg-[#121314]
+            dark:text-gray-200"  href="#">
                 <Link to={`/profilePage/${profile.id}`} className="flex items-center"> 
-                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19 11H5M19 11C20.1046 11 21 11.8954 21 13V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V13C3 11.8954 3.89543 11 5 11M19 11V9C19 7.89543 18.1046 7 17 7M5 11V9C5 7.89543 5.89543 7 7 7M7 7V5C7 3.89543 7.89543 3 9 3H15C16.1046 3 17 3.89543 17 5V7M7 7H17" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+          <span className="text-2xl"><CgProfile />
+            </span>  
 
         <span className="ml-2 font-semibold ">Mi perfil</span>
          </Link>  
           </a>
-   
-        <div className="p-4">
+ 
+        <div className="mt-2  hover:scale-125 transition-all duration-300 delay-150">
             <DialogDemo/>
         </div>
-        <div className="p-4">
-            <Link to='/chat' className="bg-white text-black px-3 py-1 rounded-md">Chat</Link>
+        <div className=" mt-2">
+            <Link to='/chat' className="bg-white dark:bg-[#121314] dark:text-white dark:border-slate-800 text-black shadow-xl hover:scale-125 transition-all duration-300 delay-150 gap-2 px-3 text-center items-center flex border p-1 w-32  rounded-md  "><span className="text-3xl"><IoChatbubbleEllipsesOutline /></span> <p className="text-xl font-semibold">Chat
+                </p> </Link>
         </div>
+        <div className="p-2 rounded-md shadow-xl text-center gap-2 items-center font-semibold hover:scale-110 transition-all duration-300 delay-150 border dark:border-slate-800 mt-10 flex justify-center text-3xl">
+            <IoGameControllerOutline /> <p className="text-sm">Quiz Game </p>
+        </div>
+         <p className="text-center ">Proximamente</p>
         </nav>
 <button onClick={() => logout()} className="text-4xl hover:text-gray-700 "><SlLogout /></button>
     </div>
