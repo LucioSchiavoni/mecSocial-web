@@ -193,8 +193,8 @@ const AllPost = () => {
                 (
                     <div className="flex gap-1 italic items-center">
                        
-                        <Link to={`/profilePage/${post.Likes[0].User.ID}`} className="hover:underline"> {post.Likes[0].User.Username}</Link>, 
-                        <Link to={`/profilePage/${post.Likes[1].User.ID}`} className="hover:underline"> {post.Likes[1].User.Username}</Link>
+                        <Link to={`/profilePage/${post.Likes[0].User.ID}`} className="hover:underline capitalize"> {post.Likes[0].User.Username}</Link>, 
+                        <Link to={`/profilePage/${post.Likes[1].User.ID}`} className="hover:underline capitalize"> {post.Likes[1].User.Username}</Link>
                         <AvatarGroup size='sm' max={2}>
                          <Avatar name='Ryan Florence'  src={post.Likes[0].User.Image} />
                          <Avatar name='Ryan Florence'  src={post.Likes[1].User.Image} />
@@ -208,7 +208,7 @@ const AllPost = () => {
                 (
                     <div className="flex gap-1 italic items-center">
                        a
-                        <Link to={`/profilePage/${post.Likes[0].User.ID}`} className="hover:underline"> {post.Likes[0].User.Username}</Link>
+                        <Link to={`/profilePage/${post.Likes[0].User.ID}`} className="hover:underline capitalize"> {post.Likes[0].User.Username}</Link>
                         <AvatarGroup size='sm' max={2}>
                          <Avatar name='Ryan Florence'  src={post.Likes[0].User.Image} />
                        
