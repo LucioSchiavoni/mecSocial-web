@@ -55,7 +55,15 @@ const Friends = () => {
  
       <div className="flex gap-5 " key={item.ID}>
         <div className="flex gap-5" >
- <img src={item.Image} alt="image-user" className="w-12 h-12 rounded-full object-cover"/>
+          {
+            item.Image ? (
+
+               <img src={item.Image} alt="image-user" className="w-12 h-12 rounded-full object-cover"/>
+            )
+            :
+             <div  className="w-12 h-12 rounded-full object-cover bg-gray-800"></div>
+          }
+
      </div>
 <div className="text-gray-300 flex-col flex gap-3">
        
