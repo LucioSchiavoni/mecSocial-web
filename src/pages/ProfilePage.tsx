@@ -130,8 +130,26 @@ const ProfilePage = () => {
               user ? 
              
                 <div key={user.ID} className=" w-full border  rounded-md dark:border-slate-800 ">
-                       <img src={user.ImageBg} alt="perfil" className="w-full h-96 object-cover " />  
-                  <img src={user.Image} alt="perfi" className="w-52 h-52 rounded-full absolute ml-4 object-cover  top-80" />
+                    
+                                                 {
+            user.ImageBg ? (
+                     <img className=" w-full h-96 object-cover " src={user.ImageBg} alt="avatar"/>
+            ) 
+            :
+            (
+                <div className=" w-full h-96 object-cover bg-gray-400 "></div>
+            )
+        }
+                             {
+            user.Image ? (
+                     <img className="w-52 h-52 rounded-full absolute ml-4 object-cover  top-80" src={user.Image} alt="avatar"/>
+            ) 
+            :
+            (
+                <div className="w-52 h-52 rounded-full bg-gray-700 absolute ml-4 object-cover  top-80"></div>
+            )
+        }
+             
                   
                      <p className="text-3xl font-semibold abolsute mt-24 px-10 py-2 capitalize">{user.Username}</p>
 

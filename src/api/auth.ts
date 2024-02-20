@@ -135,14 +135,14 @@ export const updateUserRequest = async (data: updateUser): Promise<any> => {
     if(data.password){
         formData.append('password', data.password)
     }
+    if (data.image !== undefined) {
+         formData.append('image', data.image)
+    }
+    if(data.image_Bg !== undefined){
+        formData.append('image_bg', data.image_Bg)
+    }
 
-    if(data.image){
-        formData.append('image', data.image, data.image.name)
-    }
-    
-    if(data.image_Bg){
-        formData.append('image_bg', data.image_Bg, data.image_Bg.name)
-    }
+
 
     try {
         const res = await clienteAxios.put(`/user/${data.id}`, formData, {

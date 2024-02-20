@@ -52,7 +52,7 @@ const Chat: React.FC = () => {
 
   return (
     <>
-    <div className="dark:bg-gray-800 bg-white min-h-screen">
+    <div className="dark:bg-[#1f2122] bg-no-repeat bg-cover bg-white min-h-screen">
       <div className="p-2">
         <aside className='justify-center flex items-center gap-2'>
             <span className='text-gray-400 text-xl'> <BsIncognito /></span>
@@ -66,9 +66,10 @@ const Chat: React.FC = () => {
         {messages.map((message, index) => (
           <div key={index} className='flex px-4 pt-2   items-center gap-2 mt-2'>
             <img src={message.image} alt="" className='w-14 h-14 rounded-full object-cover' />
-            <div className='mt-10 rounded-md  shadow-xl border dark:border-none dark:text-white dark:bg-slate-900 p-2 w-5/12'>
+            <div className='mt-10 rounded-md  shadow-xl border dark:border-none dark:text-white dark:bg-[#121314] p-2 w-5/12'>
               <p className='font-semibold'>{message.username}</p>
               <p className='text-xl'>{message.message}</p>
+              
 
             </div>
              {

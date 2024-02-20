@@ -48,15 +48,18 @@ const DialogDemo = () =>{
       if (description.trim() !== '') {
           updateData.description = description;
       }
-  
-      if (imageFile) {
-          updateData.image = imageFile;
-      }
-  
-      if (imageBgFile) {
-          updateData.image_Bg = imageBgFile;
-      }
-  
+    if (imageFile) {
+      updateData.image = imageFile;
+  }else{
+    updateData.image = profile.image;
+  }
+
+  if (imageBgFile) {
+      updateData.image_Bg = imageBgFile;
+  }else {
+    updateData.image_Bg = profile.image_bg;
+  }
+
 
       try {
           await update(updateData)

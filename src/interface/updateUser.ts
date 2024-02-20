@@ -2,7 +2,7 @@ export interface updateUser {
     id: string;
     username?: string;
     password?: string;
-    image?: File | null;
-    image_Bg?: File | null;
+    image?: File | undefined;
+    image_Bg?: File | undefined;
     description?: string;
 }
