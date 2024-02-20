@@ -6,7 +6,9 @@ import { FaBackspace } from "react-icons/fa";
 import { IoSendSharp } from "react-icons/io5";
 import { BsIncognito } from "react-icons/bs";
 
-const client = new W3CWebSocket('ws://localhost:8080/ws');
+
+const ws = import.meta.env.WS_URL;
+const client = new W3CWebSocket(ws);
 
 
 const Chat: React.FC = () => {
