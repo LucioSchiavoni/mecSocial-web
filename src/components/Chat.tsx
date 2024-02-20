@@ -7,7 +7,7 @@ import { IoSendSharp } from "react-icons/io5";
 import { BsIncognito } from "react-icons/bs";
 
 
-const ws = import.meta.env.WS_URL;
+const ws = import.meta.env.VITE_WS_URL;
 const client = new W3CWebSocket(ws);
 
 
