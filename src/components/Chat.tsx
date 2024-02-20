@@ -5,7 +5,7 @@ import { w3cwebsocket as W3CWebSocket } from 'websocket';
 import { FaBackspace } from "react-icons/fa";
 import { IoSendSharp } from "react-icons/io5";
 import { BsIncognito } from "react-icons/bs";
-import { DarkMode } from '@chakra-ui/react';
+
 const client = new W3CWebSocket('ws://localhost:8080/ws');
 
 
