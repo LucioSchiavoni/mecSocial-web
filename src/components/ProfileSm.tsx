@@ -41,15 +41,15 @@ const ProfileSm = () => {
     
         <nav>
                 
-            <a className="flex items-center px-4 py-2 hover:scale-125 transition duration-300 delay-150  text-gray-700  hover:bg-gray-200 dark:hover:bg-slate-800 border dark:border-slate-800 shadow-xl rounded-lg dark:dark:bg-[#121314]
-            dark:text-gray-200"  href="#">
-                <Link to={`/profilePage/${profile.id}`} className="flex items-center"> 
+           
+                <Link to={`/profilePage/${profile.id}`} className="flex items-center px-4 py-2 hover:scale-125 transition duration-300 delay-150  text-gray-700  hover:bg-gray-200 dark:hover:bg-slate-800 border dark:border-slate-800 shadow-xl rounded-lg dark:dark:bg-[#121314]
+            dark:text-gray-200"> 
           <span className="text-2xl"><CgProfile />
             </span>  
 
         <span className="ml-2 font-semibold ">Mi perfil</span>
          </Link>  
-          </a>
+        
  
         <div className="mt-2  hover:scale-125 transition-all duration-300 delay-150">
             <DialogDemo/>
@@ -58,7 +58,7 @@ const ProfileSm = () => {
             <Link to='/chat' className="bg-white dark:bg-[#121314] dark:text-white dark:border-slate-800 text-black shadow-xl hover:scale-125 transition-all duration-300 delay-150 gap-2 px-3 text-center items-center flex border p-1 w-32  rounded-md  "><span className="text-3xl"><IoChatbubbleEllipsesOutline /></span> <p className="text-xl font-semibold">Chat
                 </p> </Link>
         </div>
-        <a href="https://flagsquiz-chi.vercel.app/" target="_blank">
+        <a href="https://flagsquiz-chi.vercel.app/" hrefLang="" target="_blank">
                <div className="p-2 rounded-md shadow-xl text-center gap-2 items-center font-semibold hover:scale-110 transition-all duration-300 delay-150 border dark:border-slate-800 mt-10 flex justify-center text-3xl">
             <IoGameControllerOutline /> <p className="text-sm">Juegos </p>
         </div>

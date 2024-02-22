@@ -1,5 +1,5 @@
 import { useAuthStore } from "../store/auth"
-import { useRef } from "react"
+// import { useRef } from "react"
 import { updateUser } from "../interface/updateUser"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
@@ -20,8 +20,8 @@ const DialogDemo = () =>{
       const update = useAuthStore((state) => state.updateUser)
   const profile = useAuthStore((state) => state.profile)
   const [message, setMessage] = useState<boolean>(false)
-  const imageRef = useRef<HTMLInputElement>(null);
-  const imageBgRef = useRef<HTMLInputElement>(null);
+  // const imageRef = useRef<HTMLInputElement>(null);
+  // const imageBgRef = useRef<HTMLInputElement>(null);
 
      const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
@@ -29,8 +29,8 @@ const DialogDemo = () =>{
       const username = (e.currentTarget.elements[0] as HTMLInputElement).value;
       const password = (e.currentTarget.elements[1] as HTMLInputElement).value;
       const description = (e.currentTarget.elements[2] as HTMLInputElement).value;
-      const imageFile = imageRef.current?.files?.[0];
-      const imageBgFile = imageBgRef.current?.files?.[0];
+      // const imageFile = imageRef.current?.files?.[0];
+      // const imageBgFile = imageBgRef.current?.files?.[0];
 
       const userId: string = profile.id.toString()
   
@@ -41,7 +41,6 @@ const DialogDemo = () =>{
           updateData.username = username;
       }
       
-  
       if (password.trim() !== '') {
           updateData.password = password;
       }
@@ -49,17 +48,8 @@ const DialogDemo = () =>{
       if (description.trim() !== '') {
           updateData.description = description;
       }
-    if (imageFile) {
-      updateData.image = imageFile;
-  }else{
-    updateData.image = profile.image;
-  }
 
-  if (imageBgFile) {
-      updateData.image_Bg = imageBgFile;
-  }else {
-    updateData.image_Bg = profile.image_bg;
-  }
+
 
 
       try {

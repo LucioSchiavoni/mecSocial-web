@@ -194,9 +194,9 @@ const ProfilePage = () => {
         </aside>
         <article>
           {
-             post.Description && (
+             post && (
               <>
-                <p className="text-xl p-4 px-12">{post.Description}</p>
+              { post.Description ?  <p className="text-xl p-4 px-12">{post.Description}</p> : null}
                 
                 { post.ImagePost ? <img src={post.ImagePost} alt="image-post" className="h-auto m-auto mt-3 rounded-md w-96 object-cover" /> : null }
               </>
@@ -221,7 +221,7 @@ const ProfilePage = () => {
            {
             post.Comments && (
             post.Comments.map((comment) => (
-              <div key={comment.CreatedAt} className="flex gap-3 border p-4 dark:border-slate-800npm r">
+              <div key={comment.CreatedAt} className="flex gap-3 border p-4 dark:border-slate-900">
                 <img src={comment.User.Image} alt="" className="w-10 h-10 rounded-full" />
                 <p className="items-center font-semibold capitalize mt-2 text-xl">{comment.User.Username}</p>
                  <p className="items-center   mt-2 ">{comment.Content}</p>
