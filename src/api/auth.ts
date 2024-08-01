@@ -135,12 +135,12 @@ export const updateUserRequest = async (data: updateUser): Promise<any> => {
     if(data.password){
         formData.append('password', data.password)
     }
-    // if (data.image) {
-    //      formData.append('image', data.image)
-    // }
-    // if(data.image_Bg){
-    //     formData.append('image_bg', data.image_Bg)
-    // }
+    if (data.image) {
+         formData.append('image', data.image)
+    }
+    if(data.image_Bg){
+        formData.append('image_bg', data.image_Bg)
+    }
 
 
 

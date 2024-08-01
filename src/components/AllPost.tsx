@@ -138,6 +138,7 @@ const AllPost = () => {
         </section>
             :
                 
+            
             posts.map((post) => (
         <div key={post.ID} className="flex dark:glass mb-10  dark:bg-[#121314] bg-slate-100  justify-between flex-col shadow-xl  border dark:border-slate-800  h-auto rounded-md "> 
         <div>

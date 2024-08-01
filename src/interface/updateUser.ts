@@ -3,4 +3,6 @@ export interface updateUser {
     username?: string;
     password?: string;
     description?: string;
+    image?: File | undefined;
+    image_Bg?:File | undefined;
 }

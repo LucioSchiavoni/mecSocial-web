@@ -1,7 +1,7 @@
 import { useAuthStore } from "../store/auth"
 // import { useRef } from "react"
 import { updateUser } from "../interface/updateUser"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -20,8 +20,8 @@ const DialogDemo = () =>{
       const update = useAuthStore((state) => state.updateUser)
   const profile = useAuthStore((state) => state.profile)
   const [message, setMessage] = useState<boolean>(false)
-  // const imageRef = useRef<HTMLInputElement>(null);
-  // const imageBgRef = useRef<HTMLInputElement>(null);
+  const imageRef = useRef<HTMLInputElement>(null);
+  const imageBgRef = useRef<HTMLInputElement>(null);
 
      const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
@@ -29,8 +29,8 @@ const DialogDemo = () =>{
       const username = (e.currentTarget.elements[0] as HTMLInputElement).value;
       const password = (e.currentTarget.elements[1] as HTMLInputElement).value;
       const description = (e.currentTarget.elements[2] as HTMLInputElement).value;
-      // const imageFile = imageRef.current?.files?.[0];
-      // const imageBgFile = imageBgRef.current?.files?.[0];
+      const imageFile = imageRef.current?.files?.[0];
+      const imageBgFile = imageBgRef.current?.files?.[0];
 
       const userId: string = profile.id.toString()
   
@@ -49,8 +49,17 @@ const DialogDemo = () =>{
           updateData.description = description;
       }
 
+          if (imageFile !== undefined) {
+          updateData.image = imageFile;
+      }else{
+        updateData.image = profile.image;
+      }
 
-
+          if (imageBgFile !== undefined) {
+          updateData.image_Bg = imageBgFile;
+      }else{
+        updateData.image_Bg = profile.image_Bg
+      }
 
       try {
           await update(updateData)
@@ -116,7 +125,7 @@ const DialogDemo = () =>{
               className="col-span-3 px-3 py-4 border rounded-md shadow-xl ring-1 ring-blue-900"
             />
           </div>
-               {/* <div className="flex justify-center  gap-2">
+               <div className="flex justify-center  gap-2">
             <Label htmlFor="image" className="mt-2 text-center  dark:text-white w-5/12">
               Foto de perfil
             </Label>
@@ -135,7 +144,7 @@ const DialogDemo = () =>{
            type="file"
            className="w-full"
             />
-          </div> */}
+          </div>
         </div>
         <DialogFooter>
           <Button type="submit">Guardar cambios</Button>
