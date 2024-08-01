@@ -111,11 +111,11 @@ const AllPost = () => {
 
   return (
  
-<div className="w-full min-h-screen  ">
+<div className="w-full   ">
         <CreatePost/>
  
        <div className="grid grid-cols-1 gap-5 w-6/12 m-auto mb-5">
-        <div className="overscroll-contain ">
+        <div className=" ">
 
      
               {
@@ -137,7 +137,7 @@ const AllPost = () => {
             </div>
         </section>
             :
-                
+           
             
             posts.map((post) => (
         <div key={post.ID} className="flex dark:glass mb-10  dark:bg-[#121314] bg-slate-100  justify-between flex-col shadow-xl  border dark:border-slate-800  h-auto rounded-md "> 
@@ -257,8 +257,9 @@ const AllPost = () => {
                    </div>
   
 
-   </div>
+   </div> 
        ))}
+       
    </div>
    </div>
        </div>
